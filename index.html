@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Ganpati PG, A/C Dormitory & Rooms - Mumbai</title>
+  <link rel="manifest" href="manifest.json" />
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-glow: rgba(37, 99, 235, 0.35);
+      --accent: #0ea5e9;
+      --emerald: #10b981;
+      --glass-bg: rgba(255, 255, 255, 0.72);
+      --glass-border: rgba(255, 255, 255, 0.92);
+      --text-main: #0f172a;
+      --text-muted: #475569;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: #f1f5f9;
+      color: var(--text-main);
+      min-height: 100vh;
+      padding-bottom: 92px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Dynamic Animated Liquid Background Orbs */
+    .bg-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(75px);
+      z-index: -1;
+      animation: floatOrb 12s infinite alternate ease-in-out;
+      opacity: 0.65;
+    }
+    .orb-1 {
+      width: 280px;
+      height: 280px;
+      background: #93c5fd;
+      top: -60px;
+      left: -60px;
+    }
+    .orb-2 {
+      width: 300px;
+      height: 300px;
+      background: #a7f3d0;
+      bottom: 80px;
+      right: -80px;
+      animation-delay: -4s;
+    }
+    .orb-3 {
+      width: 220px;
+      height: 220px;
+      background: #ddd6fe;
+      top: 45%;
+      left: 30%;
+      animation-delay: -8s;
+    }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(25px, 35px) scale(1.12); }
+    }
+
+    /* Glass Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1.5px solid var(--glass-border);
+      padding: 13px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #1d4ed8, #0ea5e9);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 18px;
+      box-shadow: 0 6px 15px var(--primary-glow);
+      border: 1.5px solid rgba(255,255,255,0.6);
+    }
+
+    .brand h1 {
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.15;
+    }
+
+    .brand span {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .header-call {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      padding: 8px 13px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 4px 12px var(--primary-glow);
+      transition: transform 0.2s;
+    }
+    .header-call:active { transform: scale(0.95); }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    /* Tab Page Transition */
+    .page-section {
+      display: none;
+      animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .page-section.active { display: block; }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Liquid Glass Card with Glowing Border */
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border: 1.5px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 18px;
+      margin-bottom: 16px;
+      box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.06),
+        inset 0 1px 1px rgba(255, 255, 255, 0.9);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .glass-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent);
+      transform: skewX(-20deg);
+      transition: 0.6s;
+      pointer-events: none;
+    }
+    .glass-card:hover::before { left: 140%; }
+
+    /* Hero Card */
+    .hero-card {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(30, 58, 138, 0.9));
+      color: white;
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      border-radius: 26px;
+      padding: 22px;
+      margin-bottom: 18px;
+      box-shadow: 0 16px 35px rgba(15, 23, 42, 0.22);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .live-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid rgba(52, 211, 153, 0.4);
+      color: #6ee7b7;
+      padding: 5px 11px;
+      border-radius: 99px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .pulse-dot {
+      width: 7px; height: 7px;
+      background: #10b981;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    .hero-card h2 {
+      font-size: 21px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .hero-card p {
+      font-size: 13px;
+      color: #cbd5e1;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    /* Plan Switcher (Per Day vs Monthly) */
+    .plan-toggle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: rgba(255, 255, 255, 0.65);
+      border: 1.5px solid var(--glass-border);
+      padding: 5px;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      backdrop-filter: blur(12px);
+    }
+
+    .toggle-btn {
+      border: none;
+      background: transparent;
+      padding: 10px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .toggle-btn.active {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      box-shadow: 0 4px 12px var(--primary-glow);
+    }
+
+    /* Rate Item Grid */
+    .rate-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1.5px solid rgba(226, 232, 240, 0.9);
+      margin-bottom: 10px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .rate-item:hover {
+      border-color: #93c5fd;
+      transform: translateY(-2px);
+    }
+
+    .rate-info h4 {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .rate-info p {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .rate-action {
+      text-align: right;
+    }
+
+    .rate-price {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--primary);
+      display: block;
+    }
+
+    .mini-book-btn {
+      margin-top: 5px;
+      background: #eff6ff;
+      color: var(--primary);
+      border: 1px solid #bfdbfe;
+      padding: 5px 11px;
+      border-radius: 9px;
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    /* Interactive 10-Bed Bunk Grid */
+    .bed-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin: 10px 0 14px;
+    }
+
+    .bed-slot {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1.5px solid #cbd5e1;
+      border-radius: 14px;
+      padding: 9px 4px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .bed-slot span {
+      display: block;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .bed-slot small {
+      font-size: 9px;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .bed-slot.selected {
+      background: linear-gradient(135deg, #2563eb, #0ea5e9);
+      color: white;
+      border-color: #2563eb;
+      transform: scale(1.05);
+      box-shadow: 0 6px 14px var(--primary-glow);
+    }
+
+    .bed-slot.selected small { color: #e0f2fe; }
+
+    /* Form Controls */
+    .form-group { margin-bottom: 12px; }
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: #334155;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1.5px solid #cbd5e1;
+      background: rgba(255, 255, 255, 0.92);
+      font-size: 14px;
+      font-weight: 600;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+
+    .btn {
+      border: none;
+      border-radius: 15px;
+      padding: 13px 16px;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      text-decoration: none;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .btn:active { transform: scale(0.97); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      box-shadow: 0 8px 20px var(--primary-glow);
+    }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #16a34a, #15803d);
+      color: white;
+      box-shadow: 0 8px 20px rgba(22, 163, 74, 0.28);
+    }
+
+    .summary-box {
+      background: rgba(239, 246, 255, 0.85);
+      border: 1.5px dashed #60a5fa;
+      border-radius: 16px;
+      padding: 14px;
+      margin: 14px 0;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 17px;
+      font-weight: 800;
+      color: #1d4ed8;
+      border-top: 1px solid #bfdbfe;
+      padding-top: 8px;
+      margin-top: 6px;
+    }
+
+    /* Live Map Frame */
+    .map-wrapper {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1.5px solid var(--glass-border);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+      margin-top: 10px;
+    }
+
+    .map-wrapper iframe {
+      width: 100%;
+      height: 230px;
+      border: 0;
+      display: block;
+    }
+
+    /* Rule Badge */
+    .rule-pill {
+      display: inline-block;
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+      padding: 5px 10px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      margin: 3px 3px 3px 0;
+    }
+
+    /* Bottom Navigation */
+    .bottom-nav {
+      position: fixed;
+      bottom: 10px;
+      left: 12px;
+      right: 12px;
+      max-width: 676px;
+      margin: 0 auto;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.84);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border: 1.5px solid var(--glass-border);
+      border-radius: 22px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 8px 4px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+    }
+
+    .nav-btn {
+      background: none;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .nav-btn.active {
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .nav-btn span.ico { font-size: 19px; }
+  </style>
+</head>
+<body>
+
+  <!-- Animated Liquid Orbs -->
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+
+  <!-- Sticky Header -->
+  <header>
+    <div class="brand">
+      <div class="brand-logo">GP</div>
+      <div>
+        <h1>Ganpati PG & Dormitory</h1>
+        <span>A/C Dormitory & Rooms • Mumbai</span>
+      </div>
+    </div>
+    <a href="tel:+919876543210" class="header-call">📞 Call Now</a>
+  </header>
+
+  <div class="container">
+
+    <!-- 1. ROOMS & RATE LIST SECTION -->
+    <section id="sec-home" class="page-section active">
+      <div class="hero-card">
+        <div class="live-pill"><span class="pulse-dot"></span> Mumbai • 9–10 Separate Beds Per Room</div>
+        <h2>Ganpati PG, A/C Dormitory & Rooms</h2>
+        <p>Individual Upper & Lower Beds aur Private 2-Person Cabins. Daily aur Monthly Rental Plans available (All Inclusive Except Food).</p>
+        <div style="display:flex; gap:10px;">
+          <button class="btn btn-primary" onclick="switchTab('book')">🛏️ Book Bed Now</button>
+          <a href="https://wa.me/919876543210?text=Hello%20Ganpati%20PG%20Mumbai,%20I%20want%20to%20book%20a%20bed." target="_blank" class="btn btn-whatsapp">💬 WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- Switcher: Per Day vs Monthly Plan -->
+      <div class="plan-toggle">
+        <button class="toggle-btn active" id="btn-daily" onclick="toggleRateView('daily')">📅 Per Day Rates</button>
+        <button class="toggle-btn" id="btn-monthly" onclick="toggleRateView('monthly')">🗓️ Monthly Rental Plans</button>
+      </div>
+
+      <!-- DAILY RATES LIST -->
+      <div id="daily-rates-box" class="glass-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <h3 style="font-size:16px; font-weight:800;">Daily Dormitory & Cabin Rates</h3>
+          <span style="font-size:11px; font-weight:700; color:#dc2626;">⏰ Checkout: 9:00 AM</span>
+        </div>
+
+        <div class="rate-item">
+          <div class="rate-info">
+            <h4>Non-AC Dormitory (Upper Bed)</h4>
+            <p>10-Bed Shared Hall • Individual Upper Bunk</p>
+          </div>
+          <div class="rate-action">
+            <span class="rate-price">₹250 <small style="font-size:11px; color:#64748b;">/day</small></span>
+            <button class="mini-book-btn" onclick="quickSelect('Non-AC Dormitory Upper Bed (Daily)|250|day')">Book →</button>
+          </div>
+        </div>
+
+        <div class="rate-item">
+          <div class="rate-info">
+            <h4>Non-AC Dormitory (Lower Bed)</h4>
+            <p>10-Bed Shared Hall • Easy Access Lower Bunk</p>
+          </div>
+          <div class="rate-action">
+            <span class="rate-price">₹300 <small style="font-size:11px; color:#64748b;">/day</small></span>
+            <button class="mini-book-btn" onclick="quickSelect('Non-AC Dormitory Lower Bed (Daily)|300|day')">Book →</button>
+          </div>
+        </div>
+
+        <div class="rate-item">
+          <div class="rate-info">
+            <h4>A/C Dormitory (Upper Bed)</h4>
+            <p>9–10 Bed Air-Conditioned Hall • Upper Bed</p>
+          </div>
+          <div class="rate-action">
+            <span class="rate-price">₹350 <small style="font-size:11px; color:#64748b;">/day</small></span>
+            <button class="mini-book-btn" onclick="quickSelect('AC Dormitory Upper Bed (Daily)|350|day')">Book →</button>
+          </div>
+        </div>
+
+        <div class="rate-item">
+          <div class="rate-info">
+            <h4>A/C Dormitory (Lower Bed)</h4>
+            <p>9–10 Bed Air-Conditioned Hall • Lower Bed</p>
+          </div>
+          <div class="rate-action">
+            <span class="rate-price">₹400 <small style="font-size:11px; color:#64748b;">/day</small></span>
+            <button class="mini-book-btn" onclick="quickSelect('AC Dormitory Lower Bed (Daily)|400|day')">Book →</button>
+          </div>
+        </div>
+
+        <div class="rate-item">
+          <div class="rate-info">
+            <h4>2-Person Non-AC Cabin</h4>
+            <p>Private Cabin • Without Attached Bathroom</p>
+          </div>
+          <div class="rate-action">
+            <span class="rate-price">₹800 <small style="font-size:11px; color:#64748b;">/day</small></span>
+            <button class="mini-book-btn" onclick="quickSelect('2-Person Non-AC Cabin (No Attached Bath)|800|day')">Book →</button>
+          </div>
+        </div>
+
+        <div class="rate-item" style="margin-bottom:0;">
+          <div class="rate-info">
+            <h4>2-Person Non-AC Deluxe Cabin</h4>
+            <p>Private Cabin • With Attached Bathroom</p>
+          </div>
+          <div class="rate-action">
+            <span class="rate-price">₹1,000 <small style="font-size:11px; color:#64748b;">/day</small></span>
+            <button class="mini-book-btn" onclick="quickSelect('2-Person Non-AC Cabin (Attached Bath)|1000|day')">Book →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- MONTHLY RENTAL PLANS LIST -->
+      <div id="monthly-rates-box" class="glass-card" style="display:none;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <h3 style="font-size:16px; font-weight:800;">Monthly PG Rental Plans</h3>
+          <span style="font-size:11px; font-weight:700; color:#059669;">✓ All Inclusive (Except Food)</span>
+        </div>
+
+        <div class="rate-item">
+          <div class="rate-info">
+            <h4>Plan 1: Non-A/C Upper Bed</h4>
+            <p>Monthly Stay • Electricity & Wi-Fi Included</p>
+          </div>
+          <div class="rate-action">
+            <span class="rate-price">₹5,000 <small style="font-size:11px; color:#64748b;">/month</small></span>
+            <button class="mini-book-btn" onclick="quickSelect('Plan 1: Non-AC Upper Bed (Monthly)|5000|month')">Select →</button>
+          </div>
+        </div>
+
+        <div class="rate-item">
+          <div class="rate-info">
+            <h4>Plan 2: Non-A/C Lower Bed</h4>
+            <p>Monthly Stay • Electricity & Wi-Fi Included</p>
+          </div>
+          <div class="rate-action">
+            <span class="rate-price">₹6,000 <small style="font-size:11px; color:#64748b;">/month</small></span>
+            <button class="mini-book-btn" onclick="quickSelect('Plan 2: Non-AC Lower Bed (Monthly)|6000|month')">Select →</button>
+          </div>
+        </div>
+
+        <div class="rate-item">
+          <div class="rate-info">
+            <h4>Plan 3: A/C Upper Bed</h4>
+            <p>Full AC Monthly Stay • All Inclusive Except Food</p>
+          </div>
+          <div class="rate-action">
+            <span class="rate-price">₹7,000 <small style="font-size:11px; color:#64748b;">/month</small></span>
+            <button class="mini-book-btn" onclick="quickSelect('Plan 3: AC Upper Bed (Monthly)|7000|month')">Select →</button>
+          </div>
+        </div>
+
+        <div class="rate-item" style="margin-bottom:0;">
+          <div class="rate-info">
+            <h4>Plan 4: A/C Lower Bed</h4>
+            <p>Full AC Monthly Stay • All Inclusive Except Food</p>
+          </div>
+          <div class="rate-action">
+            <span class="rate-price">₹8,000 <small style="font-size:11px; color:#64748b;">/month</small></span>
+            <button class="mini-book-btn" onclick="quickSelect('Plan 4: AC Lower Bed (Monthly)|8000|month')">Select →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- House Rules Card -->
+      <div class="glass-card">
+        <h3 style="font-size:14px; font-weight:800; margin-bottom:8px;">📌 Important PG & Dormitory Rules</h3>
+        <div>
+          <span class="rule-pill">⏰ Checkout Time: 9:00 AM</span>
+          <span class="rule-pill">🎧 Earphones Mandatory for Audio/Video</span>
+          <span class="rule-pill">🚫 Outside Guests Not Allowed</span>
+          <span class="rule-pill">🍽️ Rent All-Inclusive Except Food</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. BOOKING & RAZORPAY COLLECTION SECTION -->
+    <section id="sec-book" class="page-section">
+      <div class="glass-card">
+        <h3 style="font-size:17px; font-weight:800; margin-bottom:14px;">🛏️ Direct Bed / Cabin Booking</h3>
+
+        <div class="form-group">
+          <label>Select Plan / Room Type</label>
+          <select id="planSelect" onchange="calculateBooking()">
+            <optgroup label="Daily Dormitory & Cabins">
+              <option value="Non-AC Dormitory Upper Bed (Daily)|250|day">Non-AC Dormitory Upper Bed - ₹250 / day</option>
+              <option value="Non-AC Dormitory Lower Bed (Daily)|300|day">Non-AC Dormitory Lower Bed - ₹300 / day</option>
+              <option value="AC Dormitory Upper Bed (Daily)|350|day">AC Dormitory Upper Bed - ₹350 / day</option>
+              <option value="AC Dormitory Lower Bed (Daily)|400|day" selected>AC Dormitory Lower Bed - ₹400 / day</option>
+              <option value="2-Person Non-AC Cabin (No Attached Bath)|800|day">2-Person Non-AC Cabin (No Attached Bath) - ₹800 / day</option>
+              <option value="2-Person Non-AC Cabin (Attached Bath)|1000|day">2-Person Non-AC Cabin (Attached Bath) - ₹1,000 / day</option>
+            </optgroup>
+            <optgroup label="Monthly Rental Plans (All Inclusive Except Food)">
+              <option value="Plan 1: Non-AC Upper Bed (Monthly)|5000|month">Plan 1: Non-AC Upper Bed - ₹5,000 / month</option>
+              <option value="Plan 2: Non-AC Lower Bed (Monthly)|6000|month">Plan 2: Non-AC Lower Bed - ₹6,000 / month</option>
+              <option value="Plan 3: AC Upper Bed (Monthly)|7000|month">Plan 3: AC Upper Bed - ₹7,000 / month</option>
+              <option value="Plan 4: AC Lower Bed (Monthly)|8000|month">Plan 4: AC Lower Bed - ₹8,000 / month</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Select Bed Number(s) in Room (10 Separate Beds)</label>
+          <div class="bed-grid" id="bedGrid"></div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+          <div class="form-group">
+            <label>Check-In Date</label>
+            <input type="date" id="checkinDate" />
+          </div>
+          <div class="form-group">
+            <label id="durationLabel">Number of Days</label>
+            <input type="number" id="durationInput" value="1" min="1" max="30" onchange="calculateBooking()" onkeyup="calculateBooking()" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Guest Full Name (As per Aadhaar/ID)</label>
+          <input type="text" id="guestName" placeholder="Enter your full name" />
+        </div>
+
+        <div class="form-group">
+          <label>WhatsApp / Mobile Number</label>
+          <input type="tel" id="guestPhone" placeholder="10-digit mobile number" />
+        </div>
+
+        <div class="summary-box">
+          <div class="summary-row">
+            <span>Selected Bed(s):</span>
+            <strong id="selectedBedsDisplay">Bed #1 (Lower)</strong>
+          </div>
+          <div class="summary-row">
+            <span>Calculation:</span>
+            <span id="calcBreakdown">₹400 × 1 bed × 1 day</span>
+          </div>
+          <div class="summary-total">
+            <span>Total Payable Amount:</span>
+            <span id="totalPriceDisplay">₹400</span>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr; gap:10px;">
+          <button class="btn btn-primary" style="width:100%;" onclick="startRazorpayPayment()">💳 Pay Now via Razorpay (UPI / Card)</button>
+          <button class="btn btn-whatsapp" style="width:100%;" onclick="sendWhatsAppBooking()">💬 Book on WhatsApp (Pay at Reception)</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. MY BOOKINGS SECTION -->
+    <section id="sec-bookings" class="page-section">
+      <h3 style="font-size:17px; font-weight:800; margin-bottom:12px;">📋 Your Saved Bookings</h3>
+      <div id="savedBookingsContainer">
+        <div class="glass-card" style="text-align:center; padding:28px 16px;">
+          <p style="font-size:14px; font-weight:800;">No active bookings yet</p>
+          <p style="font-size:12px; color:#64748b; margin:6px 0 14px;">Book your bed online or via WhatsApp to see your booking pass here.</p>
+          <button class="btn btn-primary" onclick="switchTab('book')">Book a Bed</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. OWNER, ABOUT & LIVE MUMBAI GOOGLE MAP SECTION -->
+    <section id="sec-owner" class="page-section">
+      <div class="glass-card">
+        <h3 style="font-size:16px; font-weight:800; margin-bottom:10px;">👤 Founder & Owner Details</h3>
+        <div style="display:flex; align-items:center; gap:14px; margin-bottom:14px;">
+          <div style="width:56px; height:56px; border-radius:18px; background:linear-gradient(135deg,#1e3a8a,#2563eb); color:white; display:grid; place-items:center; font-size:22px; font-weight:800; flex-shrink:0;">G</div>
+          <div>
+            <div style="font-size:16px; font-weight:800;">Ganpati PG Management</div>
+            <div style="font-size:12px; color:#2563eb; font-weight:700;">Founder & Property Owner</div>
+            <div style="font-size:12px; color:#475569; margin-top:2px;">Mumbai, Maharashtra</div>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+          <a href="tel:+919876543210" class="btn btn-primary">📞 Call Owner</a>
+          <a href="https://wa.me/919876543210" target="_blank" class="btn btn-whatsapp">💬 WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- LIVE GOOGLE MAPS (MUMBAI) -->
+      <div class="glass-card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h3 style="font-size:16px; font-weight:800;">📍 Live Location (Mumbai)</h3>
+          <a href="https://maps.google.com/?q=Mumbai,Maharashtra" target="_blank" style="font-size:12px; font-weight:700; color:#2563eb; text-decoration:none;">Open in Maps ↗</a>
+        </div>
+        <p style="font-size:12px; color:#475569; margin-top:4px;">Ganpati PG, A/C Dormitory and Rooms, Mumbai, Maharashtra</p>
+        <div class="map-wrapper">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609823277!2d72.74109995709657!3d19.08219783958221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="glass-card" style="text-align:center; padding:12px;">
+        <span style="font-size:11px; color:#64748b;">Platform Powered & Developed by <strong>RAMMS GROUPS</strong></span>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Floating Glass Bottom App Navigation -->
+  <nav class="bottom-nav">
+    <button class="nav-btn active" id="nav-home" onclick="switchTab('home')">
+      <span class="ico">🏨</span>
+      <span>Plans & Rates</span>
+    </button>
+    <button class="nav-btn" id="nav-book" onclick="switchTab('book')">
+      <span class="ico">🛏️</span>
+      <span>Book Bed</span>
+    </button>
+    <button class="nav-btn" id="nav-bookings" onclick="switchTab('bookings')">
+      <span class="ico">📋</span>
+      <span>Bookings</span>
+    </button>
+    <button class="nav-btn" id="nav-owner" onclick="switchTab('owner')">
+      <span class="ico">📍</span>
+      <span>Map & Owner</span>
+    </button>
+  </nav>
+
+  <script>
+    // ====== OWNER CONFIGURATION ======
+    const PG_NAME = "Ganpati PG, A/C Dormitory & Rooms";
+    const OWNER_PHONE = "919876543210"; // Replace with Owner's real WhatsApp number
+    const RAZORPAY_KEY = "YOUR_RAZORPAY_KEY_ID"; // Replace with Owner's Razorpay Key ID
+    // =================================
+
+    let selectedBeds = [1];
+    document.getElementById('checkinDate').valueAsDate = new Date();
+
+    function toggleRateView(type) {
+      document.getElementById('btn-daily').classList.toggle('active', type === 'daily');
+      document.getElementById('btn-monthly').classList.toggle('active', type === 'monthly');
+      document.getElementById('daily-rates-box').style.display = type === 'daily' ? 'block' : 'none';
+      document.getElementById('monthly-rates-box').style.display = type === 'monthly' ? 'block' : 'none';
+    }
+
+    function renderBeds() {
+      const grid = document.getElementById('bedGrid');
+      grid.innerHTML = '';
+      for (let i = 1; i <= 10; i++) {
+        const type = i % 2 === 1 ? 'Lower' : 'Upper';
+        const btn = document.createElement('div');
+        btn.className = 'bed-slot' + (selectedBeds.includes(i) ? ' selected' : '');
+        btn.innerHTML = `<span>🛏️ #${i}</span><small>${type}</small>`;
+        btn.onclick = () => {
+          if (selectedBeds.includes(i)) {
+            if (selectedBeds.length > 1) selectedBeds = selectedBeds.filter(x => x !== i);
+          } else {
+            selectedBeds.push(i);
+            selectedBeds.sort((a, b) => a - b);
+          }
+          renderBeds();
+          calculateBooking();
+        };
+        grid.appendChild(btn);
+      }
+    }
+
+    function quickSelect(val) {
+      document.getElementById('planSelect').value = val;
+      switchTab('book');
+      calculateBooking();
+    }
+
+    function calculateBooking() {
+      const [planName, priceStr, unit] = document.getElementById('planSelect').value.split('|');
+      const price = parseInt(priceStr);
+      const qty = Math.max(1, parseInt(document.getElementById('durationInput').value) || 1);
+      const count = selectedBeds.length;
+      const total = price * count * qty;
+
+      document.getElementById('durationLabel').innerText = unit === 'month' ? 'Number of Months' : 'Number of Days';
+      document.getElementById('selectedBedsDisplay').innerText =
+        selectedBeds.map(b => `Bed #${b} (${b % 2 === 1 ? 'Lower' : 'Upper'})`).join(', ');
+      document.getElementById('calcBreakdown').innerText =
+        `₹${price} × ${count} bed(s) × ${qty} ${unit}(s)`;
+      document.getElementById('totalPriceDisplay').innerText = `₹${total.toLocaleString('en-IN')}`;
+
+      return { planName, price, unit, qty, count, total };
+    }
+
+    function switchTab(tab) {
+      document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('sec-' + tab).classList.add('active');
+      document.getElementById('nav-' + tab).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (tab === 'bookings') renderSavedBookings();
+    }
+
+    function getGuestInfo() {
+      const name = document.getElementById('guestName').value.trim();
+      const phone = document.getElementById('guestPhone').value.trim();
+      const date = document.getElementById('checkinDate').value;
+      if (!name || phone.length < 10 || !date) {
+        alert("Please enter Guest Name, 10-digit Mobile Number, and Check-in Date.");
+        return null;
+      }
+      return { name, phone, date };
+    }
+
+    function startRazorpayPayment() {
+      const guest = getGuestInfo();
+      if (!guest) return;
+      const info = calculateBooking();
+
+      if (RAZORPAY_KEY === "YOUR_RAZORPAY_KEY_ID") {
+        alert("Razorpay Key ID set nahi hai—abhi WhatsApp booking par bhej rahe hain.");
+        sendWhatsAppBooking();
+        return;
+      }
+
+      const rzp = new Razorpay({
+        key: RAZORPAY_KEY,
+        amount: info.total * 100,
+        currency: "INR",
+        name: PG_NAME,
+        description: `${info.planName} (${info.count} Bed)`,
+        handler: function (res) {
+          saveBookingRecord(guest, info, "PAID Online (" + res.razorpay_payment_id + ")");
+          alert("Payment Successful! Booking Confirmed.");
+          switchTab('bookings');
+        },
+        prefill: { name: guest.name, contact: guest.phone },
+        theme: { color: "#2563eb" }
+      });
+      rzp.open();
+    }
+
+    function sendWhatsAppBooking() {
+      const guest = getGuestInfo();
+      if (!guest) return;
+      const info = calculateBooking();
+
+      saveBookingRecord(guest, info, "Pay at PG (WhatsApp)");
+
+      const text = `*New Booking - ${PG_NAME}*%0A` +
+        `👤 *Name:* ${guest.name}%0A` +
+        `📞 *Mobile:* ${guest.phone}%0A` +
+        `🛏️ *Plan:* ${info.planName}%0A` +
+        `🔢 *Beds:* ${selectedBeds.map(b => '#' + b).join(', ')}%0A` +
+        `📅 *Check-in:* ${guest.date} (${info.qty} ${info.unit})%0A` +
+        `💰 *Total Rent:* ₹${info.total}`;
+
+      window.open(`https://wa.me/${OWNER_PHONE}?text=${text}`, '_blank');
+      switchTab('bookings');
+    }
+
+    function saveBookingRecord(guest, info, status) {
+      const list = JSON.parse(localStorage.getItem('ganpati_pg_bookings') || '[]');
+      list.unshift({
+        id: 'GPG' + Math.floor(10000 + Math.random() * 90000),
+        plan: info.planName,
+        beds: selectedBeds.map(b => '#' + b).join(', '),
+        date: guest.date,
+        duration: `${info.qty} ${info.unit}(s)`,
+        total: info.total,
+        status
+      });
+      localStorage.setItem('ganpati_pg_bookings', JSON.stringify(list));
+    }
+
+    function renderSavedBookings() {
+      const list = JSON.parse(localStorage.getItem('ganpati_pg_bookings') || '[]');
+      const box = document.getElementById('savedBookingsContainer');
+      if (!list.length) return;
+      box.innerHTML = list.map(item => `
+        <div class="glass-card">
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+            <strong style="color:#2563eb;">#${item.id}</strong>
+            <span class="rule-pill" style="margin:0;">${item.status}</span>
+          </div>
+          <div style="font-size:15px; font-weight:800;">${item.plan}</div>
+          <div style="font-size:12px; color:#475569; margin-top:4px;">Beds: <strong>${item.beds}</strong> • Check-in: ${item.date} (${item.duration})</div>
+          <div style="font-size:15px; font-weight:800; margin-top:8px;">Amount: ₹${item.total}</div>
+        </div>
+      `).join('');
+    }
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    }
+
+    renderBeds();
+    calculateBooking();
+  </script>
+</body>
+</html>
