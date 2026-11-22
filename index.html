@@ -1,1152 +1,1279 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-IN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BuySellRentProperties.in | Mumbai Real Estate, Flats, PG & Commercial Portal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Aryan trading classes | Option Trading Education India</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #1d4ed8;
-      --primary-dark: #1e3a8a;
-      --accent: #0ea5e9;
-      --emerald: #059669;
-      --dark: #0f172a;
-      --slate: #475569;
-      --glass-bg: rgba(255, 255, 255, 0.82);
-      --glass-border: rgba(255, 255, 255, 0.96);
-      --shadow-card: 0 18px 45px rgba(15, 23, 42, 0.07);
+      --bg-base: #f6f8fc;
+      --surface-glass: rgba(255, 255, 255, 0.78);
+      --surface-solid: #ffffff;
+      --border-glass: rgba(255, 255, 255, 0.95);
+      --border-subtle: rgba(15, 23, 42, 0.08);
+      --ink-primary: #0b132b;
+      --ink-secondary: #334155;
+      --ink-muted: #64748b;
+      --brand-blue: #1d4ed8;
+      --brand-indigo: #4338ca;
+      --brand-emerald: #059669;
+      --brand-emerald-bg: #ecfdf5;
+      --shadow-ambient: 0 20px 45px -15px rgba(11, 19, 43, 0.08);
+      --shadow-card: 0 8px 24px -6px rgba(15, 23, 42, 0.05);
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-base);
+      color: var(--ink-secondary);
     }
 
     body {
-      background: #f8fafc;
-      color: var(--dark);
-      overflow-x: hidden;
       min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      line-height: 1.65;
     }
 
-    /* Classic Ambient Background */
-    .mesh-bg {
+    /* Hand-Crafted Institutional Grid & Ambient Glass Canvas */
+    #bg-grid-canvas {
       position: fixed;
       inset: 0;
-      z-index: -1;
-      background:
-        radial-gradient(circle at 10% 12%, rgba(29, 78, 216, 0.11), transparent 36%),
-        radial-gradient(circle at 90% 18%, rgba(14, 165, 233, 0.11), transparent 38%),
-        radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.08), transparent 45%),
-        #f8fafc;
-    }
-
-    /* Top Classic Frosted Glass Navbar */
-    header.site-header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(22px);
-      -webkit-backdrop-filter: blur(22px);
-      border-bottom: 1.5px solid var(--glass-border);
-      box-shadow: 0 4px 25px rgba(15, 23, 42, 0.05);
-    }
-
-    .top-bar {
-      background: #0f172a;
-      color: #e2e8f0;
-      font-size: 11.5px;
-      padding: 6px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .nav-main {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 12px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      cursor: pointer;
-    }
-
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 13px;
-      background: linear-gradient(135deg, #1d4ed8, #0ea5e9);
-      color: white;
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      font-size: 17px;
-      box-shadow: 0 8px 20px rgba(29, 78, 216, 0.25);
-    }
-
-    .brand-info h1 {
-      font-size: 17px;
-      font-weight: 800;
-      letter-spacing: -0.4px;
-      color: var(--dark);
-    }
-
-    .brand-info span {
-      font-size: 11px;
-      color: var(--slate);
-      font-weight: 600;
-      display: block;
-    }
-
-    /* Multi-Page Navigation Menu */
-    .page-menu {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-
-    .menu-link {
-      background: transparent;
-      border: none;
-      padding: 8px 13px;
-      border-radius: 11px;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--slate);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .menu-link:hover, .menu-link.active {
-      background: #eff6ff;
-      color: var(--primary);
-    }
-
-    .post-prop-btn {
-      background: linear-gradient(135deg, #1d4ed8, #2563eb);
-      color: white;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 12px;
-      font-size: 13px;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .free-tag {
-      background: #fef08a;
-      color: #854d0e;
-      font-size: 9.5px;
-      padding: 2px 6px;
-      border-radius: 6px;
-      font-weight: 800;
-    }
-
-    /* Page Container */
-    .page-view {
-      display: none;
-      animation: fadePage 0.3s ease;
-    }
-    .page-view.active { display: block; }
-
-    @keyframes fadePage {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 28px 24px;
-    }
-
-    /* Frosted Glass Panel */
-    .glass-box {
-      background: var(--glass-bg);
-      backdrop-filter: blur(22px);
-      -webkit-backdrop-filter: blur(22px);
-      border: 1.5px solid var(--glass-border);
-      border-radius: 24px;
-      box-shadow: var(--shadow-card);
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    }
-
-    .glass-box:hover {
-      border-color: rgba(37, 99, 235, 0.4);
-    }
-
-    /* Housing.com Style Hero Search Banner */
-    .hero-banner {
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.88), rgba(30, 58, 138, 0.86)),
-                  url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1400&q=80') center/cover;
-      border-radius: 28px;
-      padding: 46px 32px;
-      color: white;
-      margin-bottom: 32px;
-      box-shadow: 0 22px 50px rgba(15, 23, 42, 0.18);
-    }
-
-    .hero-banner h2 {
-      font-size: clamp(26px, 3.8vw, 42px);
-      font-weight: 800;
-      margin-bottom: 10px;
-      letter-spacing: -0.6px;
-    }
-
-    .hero-banner p {
-      font-size: 15px;
-      color: #cbd5e1;
-      margin-bottom: 26px;
-      max-width: 680px;
-    }
-
-    /* Search Widget Box */
-    .search-widget {
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(20px);
-      border-radius: 20px;
-      padding: 16px;
-      color: var(--dark);
-      max-width: 920px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    }
-
-    .search-tabs {
-      display: flex;
-      gap: 8px;
-      border-bottom: 1px solid #e2e8f0;
-      padding-bottom: 12px;
-      margin-bottom: 14px;
-      flex-wrap: wrap;
-    }
-
-    .s-tab {
-      background: #f1f5f9;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 800;
-      color: var(--slate);
-      cursor: pointer;
-    }
-
-    .s-tab.active {
-      background: var(--primary);
-      color: white;
-    }
-
-    .search-inputs {
-      display: grid;
-      grid-template-columns: 1.2fr 1.5fr 1fr auto;
-      gap: 10px;
-    }
-
-    .search-inputs select, .search-inputs input {
-      padding: 12px 14px;
-      border-radius: 12px;
-      border: 1.5px solid #cbd5e1;
-      font-size: 13.5px;
-      font-weight: 600;
-      outline: none;
-      width: 100%;
-    }
-
-    /* Property Cards Grid */
-    .prop-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-      gap: 24px;
-      margin-top: 20px;
-    }
-
-    .prop-card {
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .prop-img-wrap {
-      position: relative;
-      height: 200px;
-      overflow: hidden;
-    }
-
-    .prop-img-wrap img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease;
+      z-index: -2;
+      pointer-events: none;
     }
 
-    .prop-card:hover .prop-img-wrap img {
-      transform: scale(1.06);
+    .ambient-glow {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      z-index: -1;
+      pointer-events: none;
+      animation: floatGlow 14s ease-in-out infinite alternate;
+    }
+    .glow-left {
+      width: 460px;
+      height: 460px;
+      background: rgba(29, 78, 216, 0.11);
+      top: -120px;
+      left: -100px;
+    }
+    .glow-right {
+      width: 420px;
+      height: 420px;
+      background: rgba(5, 150, 105, 0.09);
+      bottom: 5%;
+      right: -90px;
+      animation-delay: -6s;
     }
 
-    .prop-badge {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: rgba(15, 23, 42, 0.85);
-      color: white;
-      font-size: 11px;
-      font-weight: 800;
-      padding: 5px 10px;
-      border-radius: 8px;
+    @keyframes floatGlow {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(35px, 25px) scale(1.08); }
     }
 
-    .rera-badge {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: #dcfce7;
-      color: #15803d;
-      font-size: 11px;
-      font-weight: 800;
-      padding: 5px 10px;
-      border-radius: 8px;
+    /* Top Regulatory Compliance Strip (Static, Non-Ticker) */
+    .reg-strip {
+      background: #0b132b;
+      color: #e2e8f0;
+      font-size: 0.76rem;
+      padding: 9px 16px;
+      text-align: center;
+      letter-spacing: 0.25px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .reg-strip strong {
+      color: #34d399;
+      font-weight: 600;
     }
 
-    .prop-body {
-      padding: 20px;
+    .shell {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
-    .prop-price {
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--primary);
-      margin-bottom: 4px;
+    /* Frosted Glass Navigation Bar */
+    .navbar-wrap {
+      position: sticky;
+      top: 14px;
+      z-index: 999;
+      padding: 0 16px;
+      margin-top: 14px;
     }
 
-    .prop-title {
-      font-size: 16.5px;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
-
-    .prop-loc {
-      font-size: 12.5px;
-      color: var(--slate);
-      margin-bottom: 12px;
-    }
-
-    .prop-specs {
+    .navbar {
+      max-width: 1180px;
+      margin: 0 auto;
+      height: 72px;
+      background: var(--surface-glass);
+      backdrop-filter: blur(22px) saturate(180%);
+      -webkit-backdrop-filter: blur(22px) saturate(180%);
+      border: 1px solid var(--border-glass);
+      box-shadow: var(--shadow-ambient);
+      border-radius: 18px;
       display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 16px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      transition: all 0.35s var(--ease-out-expo);
     }
 
-    .spec-pill {
-      background: #f1f5f9;
-      padding: 5px 10px;
-      border-radius: 8px;
-      font-size: 11.5px;
-      font-weight: 700;
-      color: #334155;
-    }
-
-    /* Buttons */
-    .btn {
-      padding: 11px 18px;
-      border-radius: 12px;
-      font-size: 13px;
-      font-weight: 800;
-      border: none;
+    .logo-lockup {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       cursor: pointer;
+      user-select: none;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      background: linear-gradient(135deg, #0b132b 0%, #1d4ed8 100%);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: 0 6px 16px rgba(29, 78, 216, 0.28);
+      transition: transform 0.4s var(--ease-spring);
+    }
+    .logo-lockup:hover .logo-mark {
+      transform: rotate(-6deg) scale(1.06);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .logo-text span:first-child {
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--ink-primary);
+      letter-spacing: -0.4px;
+    }
+    .logo-text span:last-child {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--brand-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    /* Navigation Tabs with Sliding Pill Indicator */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      position: relative;
+      background: rgba(241, 245, 249, 0.7);
+      padding: 5px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .nav-btn {
+      position: relative;
+      z-index: 2;
+      background: transparent;
+      border: none;
+      padding: 9px 16px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: color 0.25s ease, transform 0.2s var(--ease-spring);
+      white-space: nowrap;
+    }
+    .nav-btn:hover {
+      color: var(--ink-primary);
+    }
+    .nav-btn:active {
+      transform: scale(0.95);
+    }
+    .nav-btn.active {
+      color: #ffffff;
+    }
+
+    .nav-pill {
+      position: absolute;
+      z-index: 1;
+      height: calc(100% - 10px);
+      top: 5px;
+      left: 5px;
+      background: linear-gradient(135deg, #0b132b 0%, #1e3a8a 100%);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(11, 19, 43, 0.2);
+      transition: transform 0.38s var(--ease-spring), width 0.38s var(--ease-spring);
+    }
+
+    .mobile-burger {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+      background: #fff;
+      color: var(--ink-primary);
+      font-size: 1.25rem;
+      cursor: pointer;
+      place-items: center;
+      transition: transform 0.25s var(--ease-spring);
+    }
+    .mobile-burger:active {
+      transform: scale(0.9);
+    }
+
+    /* Trading Platform Grade Animated Buttons */
+    .btn-trade {
+      position: relative;
+      overflow: hidden;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      text-decoration: none;
-      transition: transform 0.2s;
-    }
-    .btn:active { transform: scale(0.97); }
-    .btn-primary { background: var(--primary); color: white; }
-    .btn-whatsapp { background: #16a34a; color: white; }
-    .btn-outline { background: white; color: var(--dark); border: 1.5px solid #cbd5e1; }
-
-    /* Ganpati PG & Dormitory Special Section */
-    .tariff-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 14px;
-      background: rgba(255,255,255,0.9);
-      border-radius: 16px;
-      overflow: hidden;
+      gap: 10px;
+      padding: 14px 26px;
+      border-radius: 13px;
+      font-size: 0.94rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease, background 0.3s ease;
+      user-select: none;
     }
 
-    .tariff-table th, .tariff-table td {
-      padding: 13px 16px;
-      text-align: left;
-      border-bottom: 1px solid #e2e8f0;
-      font-size: 13.5px;
+    .btn-trade::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -120%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+      transform: skewX(-22deg);
+      transition: left 0.65s var(--ease-out-expo);
+    }
+    .btn-trade:hover::before {
+      left: 140%;
+    }
+    .btn-trade:hover {
+      transform: translateY(-2.5px);
+    }
+    .btn-trade:active {
+      transform: translateY(1px) scale(0.97);
     }
 
-    .tariff-table th {
-      background: #eff6ff;
-      color: var(--primary-dark);
-      font-weight: 800;
+    .btn-primary {
+      background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+      color: #fff;
+      box-shadow: 0 10px 24px -6px rgba(29, 78, 216, 0.42);
+    }
+    .btn-primary:hover {
+      box-shadow: 0 14px 28px -6px rgba(29, 78, 216, 0.55);
     }
 
-    /* Forms */
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--ink-primary);
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      box-shadow: var(--shadow-card);
+    }
+    .btn-glass:hover {
+      background: #ffffff;
+      border-color: var(--brand-blue);
     }
 
-    .form-group { margin-bottom: 14px; }
-    .form-group label {
-      display: block;
-      font-size: 12.5px;
+    .btn-arrow {
+      display: inline-block;
+      transition: transform 0.3s var(--ease-spring);
+    }
+    .btn-trade:hover .btn-arrow {
+      transform: translateX(4px);
+    }
+
+    /* Ripple Effect Span */
+    .ripple-wave {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.45);
+      transform: scale(0);
+      animation: rippleAnim 0.6s linear;
+      pointer-events: none;
+    }
+    @keyframes rippleAnim {
+      to { transform: scale(4); opacity: 0; }
+    }
+
+    /* Page View Transitions & Reveal Animations */
+    #page-viewport {
+      padding-top: 28px;
+      padding-bottom: 40px;
+      min-height: 72vh;
+    }
+
+    .page-enter {
+      animation: pageSlideUp 0.52s var(--ease-out-expo) forwards;
+    }
+    @keyframes pageSlideUp {
+      from { opacity: 0; transform: translateY(18px) scale(0.992); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s var(--ease-out-expo), transform 0.6s var(--ease-out-expo);
+    }
+    .reveal-item.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Frosted Glass Cards */
+    .glass-panel {
+      background: var(--surface-glass);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border-glass);
+      border-radius: 22px;
+      padding: 32px;
+      box-shadow: var(--shadow-ambient);
+      transition: transform 0.35s var(--ease-out-expo), box-shadow 0.35s ease, border-color 0.3s ease;
+    }
+    .glass-panel:hover {
+      border-color: rgba(29, 78, 216, 0.22);
+      box-shadow: 0 24px 50px -15px rgba(11, 19, 43, 0.11);
+    }
+
+    .pill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-size: 0.78rem;
       font-weight: 700;
-      margin-bottom: 6px;
+      background: #eff6ff;
+      color: var(--brand-blue);
+      border: 1px solid #dbeafe;
+      margin-bottom: 16px;
+    }
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--brand-emerald);
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
     }
 
-    .form-group input, .form-group select, .form-group textarea {
-      width: 100%;
-      padding: 12px 14px;
-      border-radius: 12px;
-      border: 1.5px solid #cbd5e1;
-      background: white;
-      font-size: 14px;
-      outline: none;
-    }
-
-    /* Modal for Property Details */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.65);
-      backdrop-filter: blur(8px);
-      z-index: 2000;
-      display: none;
-      place-items: center;
-      padding: 20px;
-    }
-
-    .modal-overlay.open { display: grid; }
-
-    .modal-card {
-      background: white;
-      border-radius: 26px;
-      max-width: 640px;
-      width: 100%;
-      padding: 28px;
-      max-height: 90vh;
-      overflow-y: auto;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.25);
-    }
-
-    /* Footer */
-    footer {
-      background: #0f172a;
-      color: #cbd5e1;
-      padding: 48px 24px 28px;
-      margin-top: 60px;
-    }
-
-    .footer-grid {
-      max-width: 1280px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 28px;
-      padding-bottom: 28px;
-      border-bottom: 1px solid #1e293b;
-    }
-
-    .footer-col h4 {
-      color: white;
-      font-size: 15px;
+    h1 {
+      font-size: clamp(2rem, 4.2vw, 3.1rem);
       font-weight: 800;
+      color: var(--ink-primary);
+      line-height: 1.16;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+      font-weight: 800;
+      color: var(--ink-primary);
+      letter-spacing: -0.02em;
       margin-bottom: 12px;
     }
 
-    .footer-col a, .footer-col button {
-      display: block;
-      background: none;
-      border: none;
-      color: #94a3b8;
-      font-size: 13px;
-      text-decoration: none;
+    h3 {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--ink-primary);
       margin-bottom: 8px;
-      cursor: pointer;
-      text-align: left;
     }
 
-    .footer-col a:hover, .footer-col button:hover { color: white; }
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
 
-    @media (max-width: 850px) {
-      .search-inputs, .form-grid { grid-template-columns: 1fr; }
-      .top-bar { display: none; }
+    /* Grids */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 22px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+      gap: 24px;
+    }
+
+    /* Institutional Payoff & Greeks Simulator Widget (Static Educational Tool) */
+    .terminal-box {
+      background: #ffffff;
+      border: 1px solid rgba(15, 23, 42, 0.09);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 12px 30px rgba(15, 23, 42, 0.05);
+    }
+
+    .terminal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 14px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .metric-cell {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+      transition: transform 0.25s var(--ease-spring), border-color 0.25s ease;
+    }
+    .metric-cell:hover {
+      transform: translateY(-2px);
+      border-color: var(--brand-blue);
+    }
+    .metric-cell span {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      font-weight: 600;
+    }
+    .metric-cell strong {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.05rem;
+      color: var(--ink-primary);
+    }
+
+    /* Range Slider Styling */
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      background: #e2e8f0;
+      border-radius: 99px;
+      outline: none;
+      margin: 12px 0;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--brand-blue);
+      cursor: pointer;
+      border: 3px solid #fff;
+      box-shadow: 0 2px 8px rgba(29, 78, 216, 0.4);
+      transition: transform 0.2s var(--ease-spring);
+    }
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+    /* Filter Tabs on Courses Page */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0 26px;
+    }
+    .filter-chip {
+      padding: 9px 18px;
+      border-radius: 11px;
+      border: 1px solid #cbd5e1;
+      background: rgba(255, 255, 255, 0.8);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      cursor: pointer;
+      transition: all 0.25s var(--ease-spring);
+    }
+    .filter-chip:hover {
+      border-color: var(--brand-blue);
+      color: var(--brand-blue);
+    }
+    .filter-chip.active {
+      background: var(--ink-primary);
+      color: #fff;
+      border-color: var(--ink-primary);
+      transform: translateY(-1px);
+    }
+
+    /* Syllabus Checkmarks */
+    .topic-list {
+      list-style: none;
+      margin: 16px 0 22px;
+    }
+    .topic-list li {
+      padding: 9px 0;
+      border-bottom: 1px dashed #e2e8f0;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .topic-list li::before {
+      content: '→';
+      color: var(--brand-blue);
+      font-weight: 800;
+    }
+
+    /* Inputs & Forms */
+    .field-group {
+      margin-bottom: 16px;
+    }
+    .field-group label {
+      display: block;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--ink-primary);
+      margin-bottom: 6px;
+    }
+    .field-control {
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: 12px;
+      border: 1px solid #cbd5e1;
+      background: rgba(255, 255, 255, 0.92);
+      font-family: inherit;
+      font-size: 0.94rem;
+      color: var(--ink-primary);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .field-control:focus {
+      outline: none;
+      border-color: var(--brand-blue);
+      box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.12);
+    }
+
+    /* FAQ Smooth Accordion */
+    .acc-card {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid #e2e8f0;
+      border-radius: 15px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: border-color 0.25s ease;
+    }
+    .acc-card.open {
+      border-color: var(--brand-blue);
+    }
+    .acc-head {
+      width: 100%;
+      padding: 18px 22px;
+      background: none;
+      border: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      cursor: pointer;
+    }
+    .acc-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: #f1f5f9;
+      display: grid;
+      place-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      transition: transform 0.35s var(--ease-spring), background 0.25s ease;
+    }
+    .acc-card.open .acc-icon {
+      transform: rotate(45deg);
+      background: var(--brand-blue);
+      color: #fff;
+    }
+    .acc-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s var(--ease-out-expo), padding 0.3s ease;
+      padding: 0 22px;
+      color: var(--ink-secondary);
+      font-size: 0.92rem;
+    }
+    .acc-card.open .acc-body {
+      max-height: 220px;
+      padding: 0 22px 18px;
+    }
+
+    /* Regulatory Footer */
+    .site-footer {
+      background: #0b132b;
+      color: #cbd5e1;
+      padding: 48px 0 32px;
+      margin-top: 64px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .sebi-notice {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-left: 4px solid #34d399;
+      border-radius: 14px;
+      padding: 18px 20px;
+      font-size: 0.83rem;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.82rem;
+      color: #94a3b8;
+    }
+
+    /* Responsive Mobile Adjustments */
+    @media (max-width: 860px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .mobile-burger {
+        display: grid;
+      }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 82px;
+        left: 16px;
+        right: 16px;
+        flex-direction: column;
+        align-items: stretch;
+        background: rgba(255, 255, 255, 0.97);
+        backdrop-filter: blur(20px);
+        padding: 12px;
+        border-radius: 18px;
+        box-shadow: 0 24px 48px rgba(11, 19, 43, 0.18);
+        border: 1px solid #e2e8f0;
+      }
+      .nav-links.mobile-open {
+        display: flex;
+        animation: pageSlideUp 0.3s var(--ease-out-expo);
+      }
+      .nav-pill {
+        display: none;
+      }
+      .nav-btn.active {
+        background: var(--ink-primary);
+      }
+      .glass-panel {
+        padding: 22px;
+      }
     }
   </style>
 </head>
 <body>
+  <canvas id="bg-grid-canvas"></canvas>
+  <div class="ambient-glow glow-left"></div>
+  <div class="ambient-glow glow-right"></div>
 
-  <div class="mesh-bg"></div>
+  <div class="reg-strip">
+    <strong>SEBI COMPLIANCE DISCLOSURE:</strong> Strictly a Financial Literacy & Option Derivatives Training Institute. No Stock Tips, PMS, or Advisory Services.
+  </div>
 
-  <!-- Header & 10-Page Navigation -->
-  <header class="site-header">
-    <div class="top-bar">
-      <span>📍 Mumbai Real Estate & Accommodation Portal • Buy, Sell, Rent & PG</span>
-      <span>📞 Brokerage & Support Desk: +91 98765 43210 | buysellrentproperties.in</span>
-    </div>
-    <div class="nav-main">
-      <div class="brand" onclick="openPage('home')">
-        <div class="brand-mark">BSR</div>
-        <div class="brand-info">
-          <h1>BuySellRentProperties.in</h1>
-          <span>Mumbai Verified Property & PG Portal</span>
+  <header class="navbar-wrap">
+    <div class="navbar">
+      <div class="logo-lockup" data-route="home">
+        <div class="logo-mark">NV</div>
+        <div class="logo-text">
+          <span>NiveshVeda</span>
+          <span>Derivatives Academy India</span>
         </div>
       </div>
-
-      <nav class="page-menu">
-        <button class="menu-link active" id="nav-home" onclick="openPage('home')">Home</button>
-        <button class="menu-link" id="nav-buy" onclick="openPage('buy')">Buy Flats</button>
-        <button class="menu-link" id="nav-rent" onclick="openPage('rent')">Rent</button>
-        <button class="menu-link" id="nav-pg" onclick="openPage('pg')">PG & Dormitory</button>
-        <button class="menu-link" id="nav-commercial" onclick="openPage('commercial')">Commercial</button>
-        <button class="menu-link" id="nav-projects" onclick="openPage('projects')">New Projects</button>
-        <button class="menu-link" id="nav-calculator" onclick="openPage('calculator')">EMI & ROI Calc</button>
-        <button class="menu-link" id="nav-commission" onclick="openPage('commission')">Brokerage Plans</button>
-        <button class="menu-link" id="nav-contact" onclick="openPage('contact')">Map & Contact</button>
+      <nav class="nav-links" id="nav-links">
+        <div class="nav-pill" id="nav-pill"></div>
       </nav>
-
-      <button class="post-prop-btn" onclick="openPage('post')">
-        + Post Property <span class="free-tag">FREE</span>
-      </button>
+      <button class="mobile-burger" id="mobile-burger" aria-label="Menu">☰</button>
     </div>
   </header>
 
-  <!-- ==================== PAGE 1: HOME PORTAL ==================== -->
-  <main id="page-home" class="page-view active">
-    <div class="container">
-      <div class="hero-banner">
-        <h2>Properties to Buy, Sell, Rent & PG in Mumbai</h2>
-        <p>Verified flats, commercial offices, and daily/monthly AC dormitories across Andheri, Bandra, Dadar, Thane, and Navi Mumbai.</p>
+  <main id="page-viewport" class="shell"></main>
 
-        <div class="search-widget">
-          <div class="search-tabs">
-            <button class="s-tab active" onclick="setHeroTab(this, 'buy')">BUY</button>
-            <button class="s-tab" onclick="setHeroTab(this, 'rent')">RENT</button>
-            <button class="s-tab" onclick="setHeroTab(this, 'pg')">PG / DORMITORY</button>
-            <button class="s-tab" onclick="setHeroTab(this, 'commercial')">COMMERCIAL</button>
-            <button class="s-tab" onclick="openPage('post')">SELL / LIST PROPERTY</button>
-          </div>
-          <div class="search-inputs">
-            <select id="heroCity">
-              <option>Mumbai - Western Suburbs</option>
-              <option>Mumbai - Central / Dadar</option>
-              <option>Mumbai - South Mumbai</option>
-              <option>Navi Mumbai / Thane</option>
-            </select>
-            <input type="text" id="heroQuery" placeholder="Search locality, project, or Ganpati PG..." />
-            <select id="heroBudget">
-              <option>Any Budget</option>
-              <option>₹250 - ₹8,000 (PG/Beds)</option>
-              <option>₹15,000 - ₹60,000 / mo (Rent)</option>
-              <option>₹65 Lac - ₹2.5 Cr (Buy)</option>
-            </select>
-            <button class="btn btn-primary" onclick="executeHeroSearch()">🔍 Search</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Featured Categories Quick Cards -->
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
-        <h3 style="font-size:22px; font-weight:800;">Featured Mumbai Listings & Stays</h3>
-        <button class="btn btn-outline" onclick="openPage('buy')">View All Properties →</button>
-      </div>
-
-      <div class="prop-grid" id="homeFeaturedGrid"></div>
-
-      <!-- Highlight Banner for Ganpati PG & Dormitory -->
-      <div class="glass-box" style="padding:28px; margin-top:36px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
-        <div>
-          <span style="background:#dbeafe; color:#1d4ed8; font-size:11px; font-weight:800; padding:5px 12px; border-radius:8px;">FEATURED PARTNER • MUMBAI</span>
-          <h3 style="font-size:22px; font-weight:800; margin:8px 0 6px;">Ganpati PG, A/C Dormitory & Private Cabins</h3>
-          <p style="font-size:14px; color:var(--slate);">9–10 Separate Individual Beds per room • Daily plans from ₹250/day & Monthly plans from ₹5,000/month (All inclusive except food).</p>
-        </div>
-        <div style="display:flex; gap:10px;">
-          <button class="btn btn-primary" onclick="openPage('pg')">View Tariff & Book Bed</button>
-          <a href="https://wa.me/919876543210" target="_blank" class="btn btn-whatsapp">💬 WhatsApp Desk</a>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <!-- ==================== PAGE 2: BUY FLATS & VILLAS ==================== -->
-  <section id="page-buy" class="page-view">
-    <div class="container">
-      <div class="glass-box" style="padding:24px; margin-bottom:24px;">
-        <h2 style="font-size:26px; font-weight:800;">Buy Residential Flats & Apartments in Mumbai</h2>
-        <p style="color:var(--slate); font-size:14px; margin-top:4px;">1 BHK, 2 BHK, 3 BHK & Luxury Penthouses with Zero Hidden Charges & Direct Brokerage Support.</p>
-      </div>
-      <div class="prop-grid" id="buyGrid"></div>
-    </div>
-  </section>
-
-  <!-- ==================== PAGE 3: RENT FLATS ==================== -->
-  <section id="page-rent" class="page-view">
-    <div class="container">
-      <div class="glass-box" style="padding:24px; margin-bottom:24px;">
-        <h2 style="font-size:26px; font-weight:800;">Flats & Houses for Rent in Mumbai</h2>
-        <p style="color:var(--slate); font-size:14px; margin-top:4px;">Furnished, Semi-Furnished & Family Apartments ready for immediate possession.</p>
-      </div>
-      <div class="prop-grid" id="rentGrid"></div>
-    </div>
-  </section>
-
-  <!-- ==================== PAGE 4: PG & DORMITORY (GANPATI PG FULL MODULE) ==================== -->
-  <section id="page-pg" class="page-view">
-    <div class="container">
-      <div class="glass-box" style="padding:28px; margin-bottom:24px;">
-        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
-          <div>
-            <span style="background:#dcfce7; color:#15803d; font-size:11px; font-weight:800; padding:5px 12px; border-radius:8px;">VERIFIED MUMBAI DORMITORY & PG</span>
-            <h2 style="font-size:28px; font-weight:800; margin-top:8px;">Ganpati PG, A/C Dormitory and Rooms</h2>
-            <p style="color:var(--slate); font-size:14px; margin-top:4px;">9–10 Separate Individual Beds per hall • Checkout Time: <strong>9:00 AM</strong> • Monthly Rent All Inclusive Except Food</p>
-          </div>
-          <div style="display:flex; gap:10px;">
-            <a href="tel:+919876543210" class="btn btn-outline">📞 Call PG Desk</a>
-            <a href="https://wa.me/919876543210" target="_blank" class="btn btn-whatsapp">💬 Book via WhatsApp</a>
-          </div>
-        </div>
-
-        <div class="form-grid" style="margin-top:24px;">
-          <!-- Daily Rates Table -->
-          <div>
-            <h3 style="font-size:17px; font-weight:800; margin-bottom:8px;">1. Daily Dormitory & Cabin Tariff</h3>
-            <table class="tariff-table">
-              <thead>
-                <tr>
-                  <th>Accommodation Type</th>
-                  <th>Tariff / Day</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Non-AC Dormitory (Upper Bed)</td>
-                  <td><strong>₹250 / day</strong></td>
-                  <td><button class="btn btn-primary" style="padding:6px 12px;" onclick="bookPgItem('Non-AC Dormitory Upper Bed', 250)">Book</button></td>
-                </tr>
-                <tr>
-                  <td>Non-AC Dormitory (Lower Bed)</td>
-                  <td><strong>₹300 / day</strong></td>
-                  <td><button class="btn btn-primary" style="padding:6px 12px;" onclick="bookPgItem('Non-AC Dormitory Lower Bed', 300)">Book</button></td>
-                </tr>
-                <tr>
-                  <td>A/C Dormitory (Upper Bed)</td>
-                  <td><strong>₹350 / day</strong></td>
-                  <td><button class="btn btn-primary" style="padding:6px 12px;" onclick="bookPgItem('AC Dormitory Upper Bed', 350)">Book</button></td>
-                </tr>
-                <tr>
-                  <td>A/C Dormitory (Lower Bed)</td>
-                  <td><strong>₹400 / day</strong></td>
-                  <td><button class="btn btn-primary" style="padding:6px 12px;" onclick="bookPgItem('AC Dormitory Lower Bed', 400)">Book</button></td>
-                </tr>
-                <tr>
-                  <td>Two-Person Non-AC Cabin (No Attached Bath)</td>
-                  <td><strong>₹800 / day</strong></td>
-                  <td><button class="btn btn-primary" style="padding:6px 12px;" onclick="bookPgItem('2-Person Non-AC Cabin (No Attached Bath)', 800)">Book</button></td>
-                </tr>
-                <tr>
-                  <td>Two-Person Non-AC Cabin (Attached Bath)</td>
-                  <td><strong>₹1,000 / day</strong></td>
-                  <td><button class="btn btn-primary" style="padding:6px 12px;" onclick="bookPgItem('2-Person Non-AC Cabin (Attached Bath)', 1000)">Book</button></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Monthly Rental Plans Table -->
-          <div>
-            <h3 style="font-size:17px; font-weight:800; margin-bottom:8px;">2. Monthly Rental Plans (Applicable from 1st Apr 2026)</h3>
-            <table class="tariff-table">
-              <thead>
-                <tr>
-                  <th>Monthly Plan</th>
-                  <th>Rent / Month</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Plan 1:</strong> Non-A/C Upper Bed</td>
-                  <td><strong>₹5,000 / mo</strong></td>
-                  <td><button class="btn btn-primary" style="padding:6px 12px;" onclick="bookPgItem('Plan 1: Non-AC Upper Bed (Monthly)', 5000)">Select</button></td>
-                </tr>
-                <tr>
-                  <td><strong>Plan 2:</strong> Non-A/C Lower Bed</td>
-                  <td><strong>₹6,000 / mo</strong></td>
-                  <td><button class="btn btn-primary" style="padding:6px 12px;" onclick="bookPgItem('Plan 2: Non-AC Lower Bed (Monthly)', 6000)">Select</button></td>
-                </tr>
-                <tr>
-                  <td><strong>Plan 3:</strong> A/C Upper Bed</td>
-                  <td><strong>₹7,000 / mo</strong></td>
-                  <td><button class="btn btn-primary" style="padding:6px 12px;" onclick="bookPgItem('Plan 3: AC Upper Bed (Monthly)', 7000)">Select</button></td>
-                </tr>
-                <tr>
-                  <td><strong>Plan 4:</strong> A/C Lower Bed</td>
-                  <td><strong>₹8,000 / mo</strong></td>
-                  <td><button class="btn btn-primary" style="padding:6px 12px;" onclick="bookPgItem('Plan 4: AC Lower Bed (Monthly)', 8000)">Select</button></td>
-                </tr>
-              </tbody>
-            </table>
-
-            <div style="background:#fef3c7; border:1px solid #fde68a; border-radius:14px; padding:14px; margin-top:14px; font-size:12.5px; color:#92400e;">
-              <strong>📌 House Rules:</strong> Checkout Time 9:00 AM • Rent is All-Inclusive Except Food • Use Earphones for Audio/Video • No Outside Guests Allowed.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== PAGE 5: COMMERCIAL PROPERTIES ==================== -->
-  <section id="page-commercial" class="page-view">
-    <div class="container">
-      <div class="glass-box" style="padding:24px; margin-bottom:24px;">
-        <h2 style="font-size:26px; font-weight:800;">Commercial Offices, Shops & Co-Working Spaces</h2>
-        <p style="color:var(--slate); font-size:14px; margin-top:4px;">Prime commercial spaces in BKC, Andheri East, Lower Parel & Navi Mumbai.</p>
-      </div>
-      <div class="prop-grid" id="commercialGrid"></div>
-    </div>
-  </section>
-
-  <!-- ==================== PAGE 6: NEW RERA PROJECTS ==================== -->
-  <section id="page-projects" class="page-view">
-    <div class="container">
-      <div class="glass-box" style="padding:24px; margin-bottom:24px;">
-        <h2 style="font-size:26px; font-weight:800;">Top RERA-Approved New Projects in Mumbai</h2>
-        <p style="color:var(--slate); font-size:14px; margin-top:4px;">Direct builder inventory with zero buyer brokerage on select towers.</p>
-      </div>
-      <div class="prop-grid" id="projectsGrid"></div>
-    </div>
-  </section>
-
-  <!-- ==================== PAGE 7: POST PROPERTY (SELL / RENT LISTING FORM) ==================== -->
-  <section id="page-post" class="page-view">
-    <div class="container">
-      <div class="glass-box" style="padding:32px; max-width:820px; margin:0 auto;">
-        <span style="background:#dbeafe; color:#1d4ed8; font-size:11px; font-weight:800; padding:5px 12px; border-radius:8px;">OWNER / BROKER LISTING DESK</span>
-        <h2 style="font-size:26px; font-weight:800; margin:10px 0 6px;">Sell or Rent Your Property on BuySellRentProperties.in</h2>
-        <p style="color:var(--slate); font-size:14px; margin-bottom:22px;">Apne flat, shop ya PG ki details submit karein—hamari team verification ke baad live list karegi.</p>
-
-        <div class="form-grid">
-          <div class="form-group">
-            <label>I Want To</label>
-            <select id="postIntent">
-              <option value="Sell">Sell Property</option>
-              <option value="Rent">Rent / Lease Property</option>
-              <option value="PG / Dormitory">List PG / Hostel Beds</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Property Category</label>
-            <select id="postCategory">
-              <option>Residential Apartment (1/2/3 BHK)</option>
-              <option>Independent House / Villa</option>
-              <option>Commercial Office / Retail Shop</option>
-              <option>PG / Dormitory Beds</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Mumbai Locality / Area</label>
-            <input type="text" id="postLocation" placeholder="e.g. Andheri West, Dadar, Bandra" />
-          </div>
-          <div class="form-group">
-            <label>Expected Price / Monthly Rent (₹)</label>
-            <input type="text" id="postPrice" placeholder="e.g. ₹1.25 Cr or ₹35,000/mo" />
-          </div>
-          <div class="form-group">
-            <label>Owner / Agent Name</label>
-            <input type="text" id="postOwnerName" placeholder="Full Name" />
-          </div>
-          <div class="form-group">
-            <label>WhatsApp / Contact Number</label>
-            <input type="tel" id="postOwnerPhone" placeholder="10-digit Mobile Number" />
-          </div>
-        </div>
-
-        <button class="btn btn-primary" style="width:100%; padding:14px; margin-top:8px;" onclick="submitPropertyListing()">
-          🚀 Submit Property for Live Listing & Verification
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== PAGE 8: EMI, RENTAL YIELD & COMMISSION CALCULATOR ==================== -->
-  <section id="page-calculator" class="page-view">
-    <div class="container">
-      <div class="glass-box" style="padding:32px; max-width:860px; margin:0 auto;">
-        <h2 style="font-size:26px; font-weight:800; margin-bottom:6px;">Home Loan EMI & Brokerage Commission Calculator</h2>
-        <p style="color:var(--slate); font-size:14px; margin-bottom:22px;">Property kharidne par monthly EMI aur deal par brokerage commission turant calculate karein.</p>
-
-        <div class="form-grid">
-          <div>
-            <div class="form-group">
-              <label>Property / Loan Amount (₹)</label>
-              <input type="number" id="calcAmount" value="7500000" oninput="runCalculators()" />
-            </div>
-            <div class="form-group">
-              <label>Interest Rate (% per annum)</label>
-              <input type="number" id="calcRate" value="8.5" step="0.1" oninput="runCalculators()" />
-            </div>
-            <div class="form-group">
-              <label>Loan Tenure (Years)</label>
-              <input type="number" id="calcYears" value="20" oninput="runCalculators()" />
-            </div>
-          </div>
-
-          <div style="background:#eff6ff; border:1.5px dashed #93c5fd; border-radius:20px; padding:22px;">
-            <div style="margin-bottom:16px;">
-              <span style="font-size:12px; color:var(--slate); font-weight:700;">Estimated Monthly Home Loan EMI</span>
-              <div id="emiResult" style="font-size:28px; font-weight:800; color:var(--primary);">₹65,087 / mo</div>
-            </div>
-            <div style="border-top:1px solid #bfdbfe; padding-top:14px;">
-              <span style="font-size:12px; color:var(--slate); font-weight:700;">Standard Portal Brokerage (2% on Sale Deal)</span>
-              <div id="commResult" style="font-size:22px; font-weight:800; color:var(--emerald);">₹1,50,000</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== PAGE 9: BROKERAGE & COMMISSION PLANS ==================== -->
-  <section id="page-commission" class="page-view">
-    <div class="container">
-      <div class="glass-box" style="padding:32px;">
-        <h2 style="font-size:26px; font-weight:800; margin-bottom:8px;">Transparent Brokerage & Partner Commission Structure</h2>
-        <p style="color:var(--slate); font-size:14px; margin-bottom:24px;">BuySellRentProperties.in par property buy, sell, rent aur PG booking par clear commission model:</p>
-
-        <div class="prop-grid">
-          <div class="glass-box" style="padding:24px;">
-            <span class="spec-pill">RESIDENTIAL & COMMERCIAL SALE</span>
-            <h3 style="font-size:20px; font-weight:800; margin:12px 0 6px;">1% to 2% Deal Commission</h3>
-            <p style="font-size:13.5px; color:var(--slate);">Har verified property sale/purchase deal par buyer aur seller side se standard brokerage agreement ke tahat commission.</p>
-          </div>
-          <div class="glass-box" style="padding:24px;">
-            <span class="spec-pill">RENTAL & LEASE AGREEMENTS</span>
-            <h3 style="font-size:20px; font-weight:800; margin:12px 0 6px;">1 Month Rent Brokerage</h3>
-            <p style="font-size:13.5px; color:var(--slate);">11-month leave & license registration, police verification aur tenant onboarding ke saath 1 month rent brokerage.</p>
-          </div>
-          <div class="glass-box" style="padding:24px;">
-            <span class="spec-pill">PG & DORMITORY BOOKINGS</span>
-            <h3 style="font-size:20px; font-weight:800; margin:12px 0 6px;">Per-Bed Booking Partner Share</h3>
-            <p style="font-size:13.5px; color:var(--slate);">Har online bed/cabin booking aur monthly PG admission par direct partner commission aur Razorpay settlement.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== PAGE 10: CONTACT, OWNER DESK & LIVE MUMBAI MAP ==================== -->
-  <section id="page-contact" class="page-view">
-    <div class="container">
-      <div class="form-grid">
-        <div class="glass-box" style="padding:28px;">
-          <h2 style="font-size:24px; font-weight:800; margin-bottom:10px;">Mumbai Head Office & Support Desk</h2>
-          <p style="font-size:14px; color:var(--slate); line-height:1.6; margin-bottom:18px;">
-            Property buying, selling, rental agreements, ya Ganpati PG & Dormitory booking ke liye hamari Mumbai team se seedha sampark karein.
-          </p>
-          <div style="font-size:14px; line-height:2; margin-bottom:20px;">
-            <div>🌐 <strong>Website:</strong> www.buysellrentproperties.in</div>
-            <div>📍 <strong>Location:</strong> Mumbai, Maharashtra, India</div>
-            <div>📞 <strong>Direct Helpline:</strong> +91 98765 43210</div>
-            <div>⏰ <strong>Working Hours:</strong> 9:00 AM – 9:00 PM (All Days)</div>
-          </div>
-          <div style="display:flex; gap:10px;">
-            <a href="tel:+919876543210" class="btn btn-primary">📞 Call Now</a>
-            <a href="https://wa.me/919876543210" target="_blank" class="btn btn-whatsapp">💬 WhatsApp Support</a>
-          </div>
-        </div>
-
-        <div class="glass-box" style="padding:20px;">
-          <h3 style="font-size:18px; font-weight:800; margin-bottom:10px;">📍 Live Interactive Mumbai Map</h3>
-          <div style="border-radius:18px; overflow:hidden; height:320px; border:1.5px solid #cbd5e1;">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609823277!2d72.74109995709657!3d19.08219783958221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-              width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
-            </iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Property Details & Payment Modal -->
-  <div class="modal-overlay" id="propModal">
-    <div class="modal-card">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
-        <h3 id="modalTitle" style="font-size:20px; font-weight:800;">Property Details</h3>
-        <button onclick="closeModal()" style="background:#f1f5f9; border:none; width:34px; height:34px; border-radius:10px; font-weight:800; cursor:pointer;">✕</button>
-      </div>
-      <div id="modalBody" style="font-size:14px; color:var(--slate); line-height:1.6;"></div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:20px;">
-        <a id="modalRazorpayBtn" href="https://rzp.io/l/YOUR_PAYMENT_PAGE_LINK" target="_blank" class="btn btn-primary">💳 Pay Token / Rent (Razorpay)</a>
-        <a id="modalWhatsappBtn" href="#" target="_blank" class="btn btn-whatsapp">💬 Enquire on WhatsApp</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Classic Real Estate Portal Footer -->
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h4>BuySellRentProperties.in</h4>
-        <p style="font-size:13px; line-height:1.6;">Mumbai's trusted property portal for buying, selling, renting flats, commercial spaces, and verified PG dormitories.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Quick Navigation</h4>
-        <button onclick="openPage('buy')">Buy Flats in Mumbai</button>
-        <button onclick="openPage('rent')">Flats for Rent</button>
-        <button onclick="openPage('pg')">Ganpati PG & Dormitory</button>
-        <button onclick="openPage('commercial')">Commercial Spaces</button>
-      </div>
-      <div class="footer-col">
-        <h4>Owner & Partner Services</h4>
-        <button onclick="openPage('post')">Post Property Free</button>
-        <button onclick="openPage('commission')">Brokerage & Commission</button>
-        <button onclick="openPage('calculator')">EMI & Yield Calculator</button>
-        <button onclick="openPage('contact')">Mumbai Office Map</button>
-      </div>
-      <div class="footer-col">
-        <h4>Mumbai Support Desk</h4>
-        <a href="tel:+919876543210">📞 +91 98765 43210</a>
-        <a href="https://wa.me/919876543210" target="_blank">💬 WhatsApp Property Desk</a>
-        <a href="https://maps.google.com/?q=Mumbai,Maharashtra" target="_blank">📍 View Mumbai on Google Maps</a>
-      </div>
-    </div>
-    <div style="text-align:center; font-size:12px; color:#64748b; padding-top:22px;">
-      © 2026 BuySellRentProperties.in • All Rights Reserved.
-    </div>
-  </footer>
+  <footer class="site-footer" id="site-footer"></footer>
 
   <script>
-    const OWNER_PHONE = "919876543210";
-    const RAZORPAY_PAGE_LINK = "https://rzp.io/l/YOUR_PAYMENT_PAGE_LINK";
+    /* ==========================================================================
+       1. CLIENT CONFIGURATION (Yahan Client Ka Real Data Edit Karein)
+       ========================================================================== */
+    const INSTITUTE = {
+      name: "NiveshVeda Derivatives Institute",
+      shortName: "NiveshVeda",
+      city: "Mumbai & Online Pan-India",
+      address: "Office 402, Trade Center, Bandra Kurla Complex Road, Mumbai - 400051",
+      phone: "+91 98204 51920",
+      email: "admissions@niveshveda.in",
+      udyam: "UDYAM-MH-19-0048291",
+      routes: [
+        { id: "home", label: "Overview" },
+        { id: "curriculum", label: "Option Modules" },
+        { id: "compliance", label: "About & Policies" },
+        { id: "faq", label: "Student FAQ" },
+        { id: "admissions", label: "Admissions" }
+      ],
+      modules: [
+        {
+          id: "mod-1",
+          category: "foundation",
+          code: "MOD-01",
+          tag: "Foundation • 4 Weeks",
+          title: "Indian Index Derivatives & Market Mechanics",
+          subtitle: "Designed for beginners transitioning from equity cash markets to NIFTY & BANKNIFTY option contracts.",
+          topics: [
+            "NSE & BSE Index Option Contract Specifications & Lot Dynamics",
+            "Intrinsic Value vs Time Value (Extrinsic Premium Breakdown)",
+            "Moneyness Selection: ITM, ATM, and OTM Strike Behavior",
+            "Weekly & Monthly Expiry Settlement Rules in Indian Markets"
+          ]
+        },
+        {
+          id: "mod-2",
+          category: "core",
+          code: "MOD-02",
+          tag: "Core Quantitative • 6 Weeks",
+          title: "Option Greeks, India VIX & Open Interest Analysis",
+          subtitle: "Learn how institutional desks read option chains, volatility skew, and time decay.",
+          topics: [
+            "Practical Application of Delta, Gamma, Theta & Vega",
+            "India VIX & Implied Volatility (IV) Percentile Assessment",
+            "Decoding Option Chain: Long Buildup, Short Covering & Writing Zones",
+            "Multi-Timeframe Price Action & Institutional Liquidity Levels"
+          ]
+        },
+        {
+          id: "mod-3",
+          category: "hedging",
+          code: "MOD-03",
+          tag: "Risk Architecture • 4 Weeks",
+          title: "Defined-Risk Spreads & Capital Preservation",
+          subtitle: "Mathematical position sizing and non-directional hedging frameworks.",
+          topics: [
+            "Bull Call, Bear Put & Iron Condor Payoff Construction",
+            "Margin Management & Drawdown Control Protocols",
+            "Rule-Based Trade Journaling & Statistical Expectancy",
+            "Behavioral Discipline & Eliminating Impulse Execution"
+          ]
+        }
+      ],
+      faqs: [
+        {
+          q: "Does NiveshVeda provide live buy/sell calls, Telegram tips, or guaranteed profit schemes?",
+          a: "Strictly No. We are an educational skill-training academy. We teach students how to read NSE Option Chains, calculate Greeks, and manage risk independently. We never issue buy/sell recommendations."
+        },
+        {
+          q: "Why is SEBI registration not applicable to your academy?",
+          a: "Under SEBI (Investment Advisers) and (Research Analysts) regulations, registration is required for entities providing stock/option tips or portfolio advisory. Because NiveshVeda strictly conducts classroom and online educational training without advisory services, it operates as a registered MSME educational institution."
+        },
+        {
+          q: "Are classes available in both Hindi and English?",
+          a: "Yes. Our live interactive cohorts are conducted in simple Hinglish (Hindi + English) with clean English study handbooks and payoff worksheets."
+        },
+        {
+          q: "What is the fee refund and batch transfer policy?",
+          a: "Prospective students can attend a free orientation session before enrolling. Once enrolled, students may request a full refund within 5 days of batch commencement if less than 2 live sessions have been attended."
+        }
+      ]
+    };
 
-    // Demo Mumbai Real Estate Inventory (Realistic Demo Listings)
-    const properties = [
-      {
-        id: 1, type: "buy", featured: true,
-        title: "2 BHK Sea-Breeze Luxury Apartment",
-        location: "Andheri West, Mumbai",
-        price: "₹1.85 Cr",
-        specs: ["2 BHK", "980 sq.ft", "Ready to Move", "RERA Verified"],
-        img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80",
-        desc: "Modern 2 BHK apartment near Andheri Metro & Link Road with covered parking, modular kitchen, and 24/7 security."
-      },
-      {
-        id: 2, type: "rent", featured: true,
-        title: "Fully Furnished 1 BHK Executive Flat",
-        location: "Bandra East (Near BKC), Mumbai",
-        price: "₹42,000 / mo",
-        specs: ["1 BHK", "610 sq.ft", "Fully Furnished", "Family / Bachelors"],
-        img: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80",
-        desc: "5 minutes from Bandra Kurla Complex (BKC). Includes AC, bed, sofa, washing machine, and high-speed Wi-Fi."
-      },
-      {
-        id: 3, type: "pg", featured: true,
-        title: "Ganpati PG, A/C Dormitory & Private Cabins",
-        location: "Mumbai, Maharashtra",
-        price: "₹250/day • ₹5,000/mo",
-        specs: ["9–10 Beds/Hall", "AC & Non-AC", "Upper & Lower Beds", "2-Person Cabins"],
-        img: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80",
-        desc: "Individual separate beds per room. Daily plans ₹250–₹1,000/day & Monthly plans ₹5,000–₹8,000/month (All inclusive except food)."
-      },
-      {
-        id: 4, type: "buy", featured: false,
-        title: "3 BHK Sky-Deck Premium Residence",
-        location: "Dadar West, Mumbai",
-        price: "₹3.40 Cr",
-        specs: ["3 BHK", "1,350 sq.ft", "2 Car Parks", "OC Received"],
-        img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
-        desc: "Spacious 3 BHK residence in prime Dadar West with gymnasium, clubhouse, and sea-facing balcony."
-      },
-      {
-        id: 5, type: "rent", featured: false,
-        title: "2 BHK Family Apartment with Balcony",
-        location: "Powai, Mumbai",
-        price: "₹55,000 / mo",
-        specs: ["2 BHK", "1,050 sq.ft", "Semi-Furnished", "Gated Society"],
-        img: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80",
-        desc: "Located near Hiranandani Gardens Powai with landscaped garden, swimming pool, and 24-hour power backup."
-      },
-      {
-        id: 6, type: "commercial", featured: true,
-        title: "Grade-A Plug & Play Commercial Office",
-        location: "Lower Parel, Mumbai",
-        price: "₹1.15 Lac / mo",
-        specs: ["1,200 sq.ft", "18 Workstations", "Conference Room", "IT Park"],
-        img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
-        desc: "Ready-to-move corporate office space in Lower Parel business district with reception, pantry, and central AC."
-      },
-      {
-        id: 7, type: "projects", featured: true,
-        title: "Lodha / Oberoi Style New Tower Launch",
-        location: "Thane West & Mulund Link",
-        price: "₹92 Lac Onwards",
-        specs: ["1 & 2 BHK", "Possession Dec 2027", "Zero Buyer Brokerage", "MahaRERA"],
-        img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
-        desc: "New RERA-registered residential township with 35+ lifestyle amenities and flexible 20:80 payment plan."
+    /* ==========================================================================
+       2. SUBTLE INTERACTIVE CANVAS BACKGROUND (Hand-Crafted Graph Grid)
+       ========================================================================== */
+    (function initGridCanvas() {
+      const canvas = document.getElementById("bg-grid-canvas");
+      const ctx = canvas.getContext("2d");
+      let w, h, mouse = { x: -1000, y: -1000 };
+
+      function resize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
       }
-    ];
+      window.addEventListener("resize", resize);
+      window.addEventListener("mousemove", (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+      resize();
 
-    function createCardHTML(item) {
-      return `
-        <div class="glass-box prop-card">
-          <div class="prop-img-wrap">
-            <img src="${item.img}" alt="${item.title}" />
-            <span class="prop-badge">${item.type.toUpperCase()}</span>
-            <span class="rera-badge">✓ Verified</span>
-          </div>
-          <div class="prop-body">
-            <div class="prop-price">${item.price}</div>
-            <div class="prop-title">${item.title}</div>
-            <div class="prop-loc">📍 ${item.location}</div>
-            <div class="prop-specs">
-              ${item.specs.map(s => `<span class="spec-pill">${s}</span>`).join('')}
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        const step = 44;
+        ctx.lineWidth = 1;
+
+        for (let x = 0; x < w; x += step) {
+          for (let y = 0; y < h; y += step) {
+            const dist = Math.hypot(mouse.x - x, mouse.y - y);
+            const alpha = dist < 160 ? 0.16 * (1 - dist / 160) + 0.035 : 0.035;
+            ctx.fillStyle = `rgba(29, 78, 216, ${alpha})`;
+            ctx.fillRect(x, y, 1.5, 1.5);
+          }
+        }
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+
+    /* ==========================================================================
+       3. DYNAMIC 5-PAGE VIEWS (Pure JS Template Engine)
+       ========================================================================== */
+    const PAGES = {
+      home: () => `
+        <section class="glass-panel hero-grid reveal-item">
+          <div>
+            <div class="pill-tag"><span class="pill-dot"></span> MSME Registered Financial Education • India</div>
+            <h1>Learn Option Derivatives With Mathematical Clarity & Risk Discipline.</h1>
+            <p style="font-size:1.02rem; color:var(--ink-secondary); margin-bottom:24px; max-width:580px;">
+              A structured learning ecosystem for Indian market participants. Understand NIFTY & BANKNIFTY option mechanics, Volatility, Option Greeks, and position sizing—built purely on education, zero false promises.
+            </p>
+            <div style="display:flex; flex-wrap:wrap; gap:12px;">
+              <button class="btn-trade btn-primary" data-route="curriculum">
+                Explore Course Modules <span class="btn-arrow">→</span>
+              </button>
+              <button class="btn-trade btn-glass" data-route="admissions">
+                Book Free Orientation
+              </button>
             </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-              <button class="btn btn-primary" onclick="openPropertyModal(${item.id})">View & Book</button>
-              <a href="https://wa.me/${OWNER_PHONE}?text=Hi,%20I%20am%20interested%20in%20${encodeURIComponent(item.title)}%20(${encodeURIComponent(item.location)})" target="_blank" class="btn btn-whatsapp">💬 WhatsApp</a>
+            <div style="display:flex; gap:24px; margin-top:28px; padding-top:20px; border-top:1px solid var(--border-subtle); flex-wrap:wrap;">
+              <div>
+                <strong class="mono" style="font-size:1.25rem; color:var(--ink-primary);">14 Weeks</strong>
+                <div style="font-size:0.78rem; color:var(--ink-muted);">Structured Syllabus</div>
+              </div>
+              <div>
+                <strong class="mono" style="font-size:1.25rem; color:var(--ink-primary);">100% Live</strong>
+                <div style="font-size:0.78rem; color:var(--ink-muted);">Interactive Concept Labs</div>
+              </div>
+              <div>
+                <strong class="mono" style="font-size:1.25rem; color:var(--brand-emerald);">Zero Tips</strong>
+                <div style="font-size:0.78rem; color:var(--ink-muted);">Pure Analytical Skill</div>
+              </div>
             </div>
           </div>
+
+          <!-- Educational Option Theta & Risk Simulator (Static Learning Tool) -->
+          <div class="terminal-box">
+            <div class="terminal-header">
+              <div>
+                <span style="font-size:0.72rem; font-weight:700; color:var(--brand-blue); text-transform:uppercase;">Interactive Learning Lab</span>
+                <h3 style="margin:0; font-size:1.05rem;">Position Sizing & Drawdown Simulator</h3>
+              </div>
+              <span class="mono" style="font-size:0.75rem; background:#ecfdf5; color:#059669; padding:4px 9px; border-radius:6px; font-weight:700;">EDU-TOOL</span>
+            </div>
+
+            <div class="field-group">
+              <div style="display:flex; justify-content:space-between; font-size:0.84rem;">
+                <span>Practice Capital Allocation</span>
+                <strong class="mono" id="sim-cap-label">₹1,50,000</strong>
+              </div>
+              <input type="range" id="sim-cap" min="25000" max="1000000" step="25000" value="150000" />
+            </div>
+
+            <div class="field-group">
+              <div style="display:flex; justify-content:space-between; font-size:0.84rem;">
+                <span>Risk Per Setup (%)</span>
+                <strong class="mono" id="sim-risk-label">1.5%</strong>
+              </div>
+              <input type="range" id="sim-risk" min="0.5" max="5" step="0.5" value="1.5" />
+            </div>
+
+            <div class="metric-row">
+              <div class="metric-cell">
+                <span>Max Stop-Loss</span>
+                <strong id="sim-sl">₹2,250</strong>
+              </div>
+              <div class="metric-cell">
+                <span>1:2 Target Frame</span>
+                <strong id="sim-tgt" style="color:var(--brand-emerald);">₹4,500</strong>
+              </div>
+              <div class="metric-cell">
+                <span>10-Loss Buffer</span>
+                <strong id="sim-buf">85.0%</strong>
+              </div>
+            </div>
+            <p style="font-size:0.75rem; color:var(--ink-muted); margin-top:12px;">
+              *Illustrative risk-management math for classroom demonstration only.
+            </p>
+          </div>
+        </section>
+
+        <section style="margin-top:28px;" class="grid-3">
+          <div class="glass-panel reveal-item">
+            <div class="pill-tag">01 • Quantitative</div>
+            <h3>Option Chain & OI Architecture</h3>
+            <p style="font-size:0.92rem;">Understand how support and resistance zones form through institutional option writing and implied volatility shifts.</p>
+          </div>
+          <div class="glass-panel reveal-item">
+            <div class="pill-tag">02 • Hedging</div>
+            <h3>Defined-Risk Spread Models</h3>
+            <p style="font-size:0.92rem;">Move beyond naked option buying. Study multi-leg vertical spreads and iron condors with pre-defined maximum loss.</p>
+          </div>
+          <div class="glass-panel reveal-item">
+            <div class="pill-tag">03 • Compliance</div>
+            <h3>Transparent Ethical Pedagogy</h3>
+            <p style="font-size:0.92rem;">No screenshot marketing, no profit guarantees. Every session focuses on repeatable analysis and capital safety.</p>
+          </div>
+        </section>
+      `,
+
+      curriculum: () => `
+        <section class="glass-panel reveal-item">
+          <div class="pill-tag">Academic Curriculum • 2026 Cohort</div>
+          <h2>Structured Option Trading Modules</h2>
+          <p style="max-width:680px; color:var(--ink-secondary);">
+            Filter modules below by skill level. Each program includes live interactive classes, option payoff sheet templates, and post-market case studies.
+          </p>
+
+          <div class="filter-bar" id="module-filters">
+            <button class="filter-chip active" data-filter="all">All Modules (3)</button>
+            <button class="filter-chip" data-filter="foundation">Foundation</button>
+            <button class="filter-chip" data-filter="core">Option Greeks & OI</button>
+            <button class="filter-chip" data-filter="hedging">Hedging & Risk</button>
+          </div>
+
+          <div class="grid-3" id="modules-grid">
+            ${renderModuleCards("all")}
+          </div>
+        </section>
+      `,
+
+      compliance: () => `
+        <section class="glass-panel reveal-item">
+          <div class="pill-tag">Institutional Governance & Legal</div>
+          <h2>About ${INSTITUTE.name}</h2>
+          <p style="max-width:760px; margin-bottom:24px;">
+            Founded to elevate financial literacy across India, ${INSTITUTE.name} bridges the gap between theoretical finance and practical derivatives risk management. We strictly adhere to regulatory guidelines by separating education from investment advisory.
+          </p>
+
+          <div class="grid-2">
+            <div class="terminal-box">
+              <h3>Registered Entity Details</h3>
+              <ul class="topic-list">
+                <li><strong>Institute Name:</strong> ${INSTITUTE.name}</li>
+                <li><strong>MSME Udyam Registration:</strong> <span class="mono">${INSTITUTE.udyam}</span></li>
+                <li><strong>Training Center:</strong> ${INSTITUTE.address}</li>
+                <li><strong>Official Desk:</strong> ${INSTITUTE.email}</li>
+              </ul>
+            </div>
+
+            <div class="terminal-box">
+              <h3>Code of Conduct & Policies</h3>
+              <ul class="topic-list">
+                <li><strong>Non-Advisory Declaration:</strong> We do not manage client funds, share demat credentials, or provide buy/sell calls.</li>
+                <li><strong>Privacy Protection:</strong> Student data submitted on this portal is used strictly for academic counseling and never shared with third parties.</li>
+                <li><strong>Refund Policy:</strong> Full fee refund available within 5 days of batch start if fewer than 2 classes are attended.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      `,
+
+      faq: () => `
+        <section class="glass-panel reveal-item">
+          <div class="pill-tag">Transparency Desk</div>
+          <h2>Frequently Asked Questions</h2>
+          <p style="margin-bottom:22px; color:var(--ink-secondary);">Clear answers regarding our teaching methodology, regulatory status, and batch structure.</p>
+          <div id="faq-container">
+            ${INSTITUTE.faqs
+              .map(
+                (item, i) => `
+              <div class="acc-card ${i === 0 ? "open" : ""}">
+                <button class="acc-head">
+                  <span>${item.q}</span>
+                  <span class="acc-icon">+</span>
+                </button>
+                <div class="acc-body">${item.a}</div>
+              </div>
+            `
+              )
+              .join("")}
+          </div>
+        </section>
+      `,
+
+      admissions: () => `
+        <div class="grid-2">
+          <section class="glass-panel reveal-item">
+            <div class="pill-tag">Batch Enrollment & Orientation</div>
+            <h2>Request Syllabus & Demo Session</h2>
+            <p style="margin-bottom:20px; font-size:0.93rem;">
+              Submit your details below. Our academic coordinator will share upcoming weekend/weekday batch schedules and fee details.
+            </p>
+            <form id="admission-form">
+              <div class="field-group">
+                <label>Student Full Name *</label>
+                <input type="text" class="field-control" id="inp-name" placeholder="e.g. Aarav Sharma" required />
+              </div>
+              <div class="field-group">
+                <label>Mobile / WhatsApp Number *</label>
+                <input type="tel" class="field-control" id="inp-phone" placeholder="10-digit Indian mobile number" pattern="[0-9]{10}" required />
+              </div>
+              <div class="field-group">
+                <label>Preferred Track</label>
+                <select class="field-control" id="inp-track">
+                  <option>Complete 14-Week Derivatives Program (Modules 1–3)</option>
+                  <option>MOD-01: Index Derivatives Foundation</option>
+                  <option>MOD-02: Option Greeks & Volatility Lab</option>
+                  <option>MOD-03: Defined-Risk Spreads & Hedging</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label>Current Market Experience</label>
+                <select class="field-control" id="inp-exp">
+                  <option>Beginner (New to Options)</option>
+                  <option>Intermediate (6+ Months Equity/Index Experience)</option>
+                  <option>Working Professional Seeking Structured Risk Rules</option>
+                </select>
+              </div>
+              <button type="submit" class="btn-trade btn-primary" style="width:100%;">
+                Submit Orientation Request <span class="btn-arrow">→</span>
+              </button>
+            </form>
+            <div id="form-feedback" style="margin-top:14px; font-size:0.9rem; font-weight:600; color:var(--brand-emerald);"></div>
+          </section>
+
+          <section class="glass-panel reveal-item" style="display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <div class="pill-tag">Academic Helpdesk</div>
+              <h3>Campus & Counseling Desk</h3>
+              <p style="font-size:0.92rem; margin-bottom:20px;">
+                Have questions before joining? Connect directly with our academic counseling team during market and evening hours.
+              </p>
+              <div class="terminal-box" style="margin-bottom:18px;">
+                <p style="margin-bottom:10px;"><strong>📍 Center:</strong> ${INSTITUTE.address}</p>
+                <p style="margin-bottom:10px;"><strong>📞 Phone:</strong> <span class="mono">${INSTITUTE.phone}</span></p>
+                <p><strong>✉️ Email:</strong> <span class="mono">${INSTITUTE.email}</span></p>
+              </div>
+            </div>
+            <div style="background:#eff6ff; border:1px solid #bfdbfe; padding:16px; border-radius:14px; font-size:0.84rem; color:#1e3a8a;">
+              <strong>Security Reminder:</strong> ${INSTITUTE.shortName} only accepts course fees into its official registered current account. Never transfer funds to personal accounts for trading or tips.
+            </div>
+          </section>
         </div>
-      `;
+      `
+    };
+
+    function renderModuleCards(filter) {
+      const list = filter === "all"
+        ? INSTITUTE.modules
+        : INSTITUTE.modules.filter((m) => m.category === filter);
+
+      return list
+        .map(
+          (m) => `
+        <article class="terminal-box" style="display:flex; flex-direction:column; justify-content:space-between;">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+              <span class="pill-tag" style="margin:0;">${m.tag}</span>
+              <span class="mono" style="font-size:0.76rem; color:var(--ink-muted); font-weight:700;">${m.code}</span>
+            </div>
+            <h3>${m.title}</h3>
+            <p style="font-size:0.87rem; color:var(--ink-muted);">${m.subtitle}</p>
+            <ul class="topic-list">
+              ${m.topics.map((t) => `<li>${t}</li>`).join("")}
+            </ul>
+          </div>
+          <button class="btn-trade btn-glass" style="width:100%;" data-route="admissions">
+            Request Batch Schedule <span class="btn-arrow">→</span>
+          </button>
+        </article>
+      `
+        )
+        .join("");
     }
 
-    function renderAllGrids() {
-      document.getElementById('homeFeaturedGrid').innerHTML = properties.filter(p => p.featured).map(createCardHTML).join('');
-      document.getElementById('buyGrid').innerHTML = properties.filter(p => p.type === 'buy').map(createCardHTML).join('');
-      document.getElementById('rentGrid').innerHTML = properties.filter(p => p.type === 'rent').map(createCardHTML).join('');
-      document.getElementById('commercialGrid').innerHTML = properties.filter(p => p.type === 'commercial').map(createCardHTML).join('');
-      document.getElementById('projectsGrid').innerHTML = properties.filter(p => p.type === 'projects').map(createCardHTML).join('');
+    /* ==========================================================================
+       4. ROUTING, SLIDING PILL NAV & INTERACTIVE ENGINE
+       ========================================================================== */
+    const navEl = document.getElementById("nav-links");
+    const pillEl = document.getElementById("nav-pill");
+    const viewport = document.getElementById("page-viewport");
+
+    function buildNavigation(activeId) {
+      // Remove old buttons except sliding pill
+      navEl.querySelectorAll(".nav-btn").forEach((b) => b.remove());
+
+      INSTITUTE.routes.forEach((r) => {
+        const btn = document.createElement("button");
+        btn.className = "nav-btn" + (r.id === activeId ? " active" : "");
+        btn.textContent = r.label;
+        btn.dataset.route = r.id;
+        navEl.appendChild(btn);
+      });
+
+      requestAnimationFrame(() => updateNavPill(activeId));
     }
 
-    function openPage(pageId) {
-      document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.menu-link').forEach(m => m.classList.remove('active'));
-      document.getElementById('page-' + pageId).classList.add('active');
-      const activeNav = document.getElementById('nav-' + pageId);
-      if (activeNav) activeNav.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    function updateNavPill(activeId) {
+      const activeBtn = navEl.querySelector(`.nav-btn[data-route="${activeId}"]`);
+      if (!activeBtn || window.innerWidth <= 860) return;
+      pillEl.style.width = `${activeBtn.offsetWidth}px`;
+      pillEl.style.transform = `translateX(${activeBtn.offsetLeft - 5}px)`;
     }
 
-    let selectedSearchTarget = 'buy';
-    function setHeroTab(btn, target) {
-      document.querySelectorAll('.s-tab').forEach(t => t.classList.remove('active'));
-      btn.classList.add('active');
-      selectedSearchTarget = target;
+    function switchPage(routeId) {
+      const target = PAGES[routeId] ? routeId : "home";
+      buildNavigation(target);
+
+      viewport.classList.remove("page-enter");
+      void viewport.offsetWidth;
+      viewport.innerHTML = PAGES[target]();
+      viewport.classList.add("page-enter");
+
+      navEl.classList.remove("mobile-open");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      // Trigger Staggered Reveal
+      const reveals = viewport.querySelectorAll(".reveal-item");
+      reveals.forEach((el, idx) => {
+        setTimeout(() => el.classList.add("is-visible"), 70 * idx);
+      });
+
+      bindPageInteractions(target);
     }
 
-    function executeHeroSearch() {
-      const q = document.getElementById('heroQuery').value.toLowerCase();
-      if (q.includes('pg') || q.includes('ganpati') || q.includes('bed') || selectedSearchTarget === 'pg') {
-        openPage('pg');
-      } else {
-        openPage(selectedSearchTarget);
+    function bindPageInteractions(route) {
+      if (route === "home") {
+        const capSlider = document.getElementById("sim-cap");
+        const riskSlider = document.getElementById("sim-risk");
+        const updateSim = () => {
+          const cap = Number(capSlider.value);
+          const risk = Number(riskSlider.value);
+          const maxLoss = Math.round((cap * risk) / 100);
+          const target = maxLoss * 2;
+          const remainingPct = Math.max(0, (100 - risk * 10)).toFixed(1);
+
+          document.getElementById("sim-cap-label").textContent = "₹" + cap.toLocaleString("en-IN");
+          document.getElementById("sim-risk-label").textContent = risk.toFixed(1) + "%";
+          document.getElementById("sim-sl").textContent = "₹" + maxLoss.toLocaleString("en-IN");
+          document.getElementById("sim-tgt").textContent = "₹" + target.toLocaleString("en-IN");
+          document.getElementById("sim-buf").textContent = remainingPct + "%";
+        };
+        capSlider.addEventListener("input", updateSim);
+        riskSlider.addEventListener("input", updateSim);
+      }
+
+      if (route === "curriculum") {
+        const filterBar = document.getElementById("module-filters");
+        const grid = document.getElementById("modules-grid");
+        filterBar.addEventListener("click", (e) => {
+          const chip = e.target.closest(".filter-chip");
+          if (!chip) return;
+          filterBar.querySelectorAll(".filter-chip").forEach((c) => c.classList.remove("active"));
+          chip.classList.add("active");
+          grid.innerHTML = renderModuleCards(chip.dataset.filter);
+        });
+      }
+
+      if (route === "faq") {
+        document.querySelectorAll(".acc-head").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            btn.parentElement.classList.toggle("open");
+          });
+        });
+      }
+
+      if (route === "admissions") {
+        const form = document.getElementById("admission-form");
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const name = document.getElementById("inp-name").value.trim();
+          const feedback = document.getElementById("form-feedback");
+          feedback.textContent = `✓ Thank you, ${name}. Your orientation request has been logged. Our counseling desk will reach out within 24 working hours.`;
+          form.reset();
+        });
       }
     }
 
-    function openPropertyModal(id) {
-      const item = properties.find(p => p.id === id);
-      if (!item) return;
-      if (item.type === 'pg') {
-        openPage('pg');
-        return;
-      }
-      document.getElementById('modalTitle').innerText = item.title;
-      document.getElementById('modalBody').innerHTML = `
-        <img src="${item.img}" style="width:100%; height:200px; object-fit:cover; border-radius:16px; margin-bottom:12px;" />
-        <p><strong>Location:</strong> ${item.location}</p>
-        <p><strong>Price / Rent:</strong> <span style="color:#1d4ed8; font-weight:800;">${item.price}</span></p>
-        <p style="margin-top:8px;">${item.desc}</p>
-      `;
-      document.getElementById('modalWhatsappBtn').href =
-        `https://wa.me/${OWNER_PHONE}?text=Hello,%20I%20want%20details%20for%20${encodeURIComponent(item.title)}%20(${encodeURIComponent(item.price)})`;
-      document.getElementById('propModal').classList.add('open');
-    }
-
-    function bookPgItem(planName, amount) {
-      document.getElementById('modalTitle').innerText = "Ganpati PG & Dormitory Booking";
-      document.getElementById('modalBody').innerHTML = `
-        <p><strong>Selected Plan:</strong> ${planName}</p>
-        <p><strong>Payable Amount:</strong> <span style="color:#1d4ed8; font-size:18px; font-weight:800;">₹${amount}</span></p>
-        <p style="margin-top:8px;">• Checkout Time: 9:00 AM<br>• Rent is All-Inclusive Except Food<br>• Earphones Mandatory & No Outside Guests</p>
-      `;
-      document.getElementById('modalRazorpayBtn').href = RAZORPAY_PAGE_LINK;
-      document.getElementById('modalWhatsappBtn').href =
-        `https://wa.me/${OWNER_PHONE}?text=Hello%20Ganpati%20PG%20Mumbai,%20I%20want%20to%20book%20*${encodeURIComponent(planName)}*%20(₹${amount}).`;
-      document.getElementById('propModal').classList.add('open');
-    }
-
-    function closeModal() {
-      document.getElementById('propModal').classList.remove('open');
-    }
-
-    function submitPropertyListing() {
-      const intent = document.getElementById('postIntent').value;
-      const cat = document.getElementById('postCategory').value;
-      const loc = document.getElementById('postLocation').value.trim();
-      const price = document.getElementById('postPrice').value.trim();
-      const name = document.getElementById('postOwnerName').value.trim();
-      const phone = document.getElementById('postOwnerPhone').value.trim();
-
-      if (!loc || !price || !name || phone.length < 10) {
-        alert("Please fill all property and contact details.");
-        return;
+    /* ==========================================================================
+       5. BUTTON RIPPLE & GLOBAL DELEGATION
+       ========================================================================== */
+    document.addEventListener("click", (e) => {
+      // Ripple on .btn-trade
+      const tradeBtn = e.target.closest(".btn-trade");
+      if (tradeBtn) {
+        const rect = tradeBtn.getBoundingClientRect();
+        const circle = document.createElement("span");
+        const size = Math.max(rect.width, rect.height);
+        circle.style.width = circle.style.height = `${size}px`;
+        circle.style.left = `${e.clientX - rect.left - size / 2}px`;
+        circle.style.top = `${e.clientY - rect.top - size / 2}px`;
+        circle.className = "ripple-wave";
+        tradeBtn.appendChild(circle);
+        setTimeout(() => circle.remove(), 600);
       }
 
-      const msg = `*New Property Listing - BuySellRentProperties.in*%0A` +
-        `📌 *Type:* ${intent} (${cat})%0A` +
-        `📍 *Location:* ${loc}%0A` +
-        `💰 *Price/Rent:* ${price}%0A` +
-        `👤 *Owner:* ${name} (${phone})`;
+      // Route switch
+      const routeTrigger = e.target.closest("[data-route]");
+      if (routeTrigger) {
+        switchPage(routeTrigger.dataset.route);
+      }
+    });
 
-      window.open(`https://wa.me/${OWNER_PHONE}?text=${msg}`, '_blank');
-    }
+    document.getElementById("mobile-burger").addEventListener("click", () => {
+      navEl.classList.toggle("mobile-open");
+    });
 
-    function runCalculators() {
-      const P = parseFloat(document.getElementById('calcAmount').value) || 0;
-      const r = (parseFloat(document.getElementById('calcRate').value) || 0) / 12 / 100;
-      const n = (parseFloat(document.getElementById('calcYears').value) || 1) * 12;
+    window.addEventListener("resize", () => {
+      const active = navEl.querySelector(".nav-btn.active");
+      if (active) updateNavPill(active.dataset.route);
+    });
 
-      const emi = r > 0 ? (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1) : P / n;
-      const commission = P * 0.02;
+    /* ==========================================================================
+       6. MANDATORY SEBI FOOTER RENDER
+       ========================================================================== */
+    document.getElementById("site-footer").innerHTML = `
+      <div class="shell">
+        <div class="sebi-notice">
+          <strong>MANDATORY REGULATORY & RISK DISCLAIMER:</strong> Trading in Futures and Options (Derivatives) involves substantial risk of capital loss and is not suitable for every investor. <strong>${INSTITUTE.name}</strong> is purely an educational training institution and is <strong>NOT registered with SEBI</strong> as an Investment Adviser (IA) or Research Analyst (RA). No content, simulator, or classroom session on this website constitutes investment advice, stock tips, or guaranteed return assurances.
+        </div>
+        <div class="footer-meta">
+          <span>© ${new Date().getFullYear()} ${INSTITUTE.name} (${INSTITUTE.udyam}). All Rights Reserved.</span>
+          <span>Educational Portal • No Live Advisory</span>
+        </div>
+      </div>
+    `;
 
-      document.getElementById('emiResult').innerText = `₹${Math.round(emi).toLocaleString('en-IN')} / mo`;
-      document.getElementById('commResult').innerText = `₹${Math.round(commission).toLocaleString('en-IN')}`;
-    }
-
-    renderAllGrids();
-    runCalculators();
+    // Boot Application
+    switchPage("home");
   </script>
 </body>
 </html>
